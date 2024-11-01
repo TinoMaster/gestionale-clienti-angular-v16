@@ -1,0 +1,19 @@
+.orange {
+  background-color: var(--bs-orange);
+  box-shadow: 0 0.5rem 1rem rgba(252, 126, 8, 0.351) ;
+}
+
+.pink {
+  background-color: var(--bs-pink);
+  box-shadow: 0 0.5rem 1rem rgba(212, 51, 132, 0.351) ;
+}
+
+.green {
+  background-color: var(--bs-teal);
+  box-shadow: 0 0.5rem 1rem rgba(32, 201, 150, 0.351) ;
+}
+
+.blue {
+  background-color: var(--bs-cyan);
+  box-shadow: 0 0.5rem 1rem rgba(21, 181, 255, 0.351) ;
+}

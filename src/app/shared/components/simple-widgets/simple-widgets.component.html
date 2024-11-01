@@ -1,0 +1,38 @@
+<div
+  class="position-relative d-flex flex-column rounded-2 bg-white text-secondary shadow"
+>
+  <div
+    class="bg-clip-border mx-4 rounded-circle overflow-hidden text-white position-absolute"
+    style="
+      margin-top: -1rem;
+      display: grid;
+      place-items: center;
+      height: 4rem;
+      width: 4rem;
+    "
+    [ngClass]="backgroundColorClass"
+  >
+    <mat-icon
+      aria-hidden="false"
+      aria-label="Example home icon"
+      [fontIcon]="icon"
+    >
+    </mat-icon>
+  </div>
+  <div class="p-4 text-end">
+    <p class="mb-1 text-muted small">
+      <ng-content select=".widget-title"></ng-content>
+    </p>
+    <h4
+      class="fw-semibold text-dark"
+      style="font-size: 1.5rem; line-height: 1.2"
+    >
+      <ng-content select=".widget-value"></ng-content>
+    </h4>
+  </div>
+  <div class="border-top pt-3 pb-2 px-4">
+    <p class="mb-0 text-muted" style="font-size: 1rem; line-height: 1.5">
+      <ng-content select=".widget-description"></ng-content>
+    </p>
+  </div>
+</div>

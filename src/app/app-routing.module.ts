@@ -5,7 +5,7 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     component: DashboardComponent,
   },
   {
@@ -21,6 +21,11 @@ const routes: Routes = [
       import('./pages/fatture/fatture-routing.module').then(
         (m) => m.FattureRoutingModule
       ),
+  },
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
   },
   {
     path: '**',

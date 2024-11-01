@@ -1,86 +1,91 @@
-<aside class="d-flex flex-column h-100 bg-dark bg-gradient p-3">
+<aside class="d-flex flex-column h-100 bg-dark bg-gradient p-3 rounded-1">
   <!-- Title -->
   <div
-    class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+    class="d-flex justify-content-center align-items-center mb-3 bg-light w-100 rounded-1"
   >
-    <button class="btn text-white">
-      <h1 routerLink="/inizio">Gestionale Clienti</h1>
+    <button class="btn">
+      <span class="h4" routerLink="/dashboard">Gestionale Clienti</span>
     </button>
   </div>
   <!-- Links -->
-  <nav class="nav navbar">
-    <ul>
-      <li>
-        <a aria-current="page" routerLink="/inizio">
-          <button class="btn text-white" type="button">
-            <mat-icon
-              aria-hidden="false"
-              aria-label="Example home icon"
-              fontIcon="home"
-            >
-            </mat-icon>
+  <hr />
+  <nav class="d-flex flex-column gap-2">
+    <p class="text-white h6">pages</p>
+    <button
+      mat-button
+      class="d-flex justify-content-start align-items-center mx-1 text-white rounded-1"
+      routerLink="/dashboard"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="home"
+      >
+      </mat-icon>
 
-            <span> inizio </span>
-          </button>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/clienti">
-          <button type="button">
-            <mat-icon
-              aria-hidden="false"
-              aria-label="Example home icon"
-              fontIcon="groups"
-            >
-            </mat-icon>
-            <span> clienti </span>
-          </button>
-        </a>
-      </li>
-      <li>
-        <a class="" routerLink="/fatture">
-          <button type="button">
-            <mat-icon
-              aria-hidden="false"
-              aria-label="Example home icon"
-              fontIcon="receipt_long"
-            >
-            </mat-icon>
-            <span> fatture </span>
-          </button>
-        </a>
-      </li>
-    </ul>
-    <ul>
-      <li>
-        <p>auth pages</p>
-      </li>
-      <li>
-        <a class="" href="#">
-          <button type="button">
-            <mat-icon
-              aria-hidden="false"
-              aria-label="Example home icon"
-              fontIcon="login"
-            >
-            </mat-icon>
-            <span> sign in </span>
-          </button>
-        </a>
-      </li>
-      <li>
-        <a class="" href="#">
-          <button type="button">
-            <mat-icon
-              aria-hidden="false"
-              aria-label="Example home icon"
-              fontIcon="person_add"
-            >
-            </mat-icon>
-            <span> sign up </span>
-          </button>
-        </a>
-      </li>
-    </ul>
+      <span> dashboard </span>
+    </button>
+
+    <button
+      mat-button
+      class="d-flex justify-content-start align-items-center mx-1 text-white rounded-1"
+      routerLink="/clienti"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="groups"
+      >
+      </mat-icon>
+
+      <span> clienti </span>
+    </button>
+
+    <button
+      mat-button
+      class="d-flex justify-content-start align-items-center mx-1 text-white rounded-1"
+      routerLink="/fatture"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="receipt_long"
+      >
+      </mat-icon>
+
+      <span> fatture </span>
+    </button>
+
+    <hr />
+    <p class="text-white h6">auth pages</p>
+    <button
+      mat-button
+      class="d-flex justify-content-start align-items-center mx-1 text-white rounded-1"
+      routerLink="/login"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="login"
+      >
+      </mat-icon>
+
+      <span> sign in </span>
+    </button>
+
+    <button
+      mat-button
+      class="d-flex justify-content-start align-items-center mx-1 text-white rounded-1"
+      routerLink="/signup"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="person_add"
+      >
+      </mat-icon>
+
+      <span> sign up </span>
+    </button>
   </nav>
 </aside>

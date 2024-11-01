@@ -17,6 +17,7 @@ import { FattureComponent } from './pages/fatture/fatture.component';
 import { ProdottiComponent } from './pages/prodotti/prodotti.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { SimpleWidgetsComponent } from './shared/components/simple-widgets/simple-widgets.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { BrowserModule } from '@angular/platform-browser';
     ClientiComponent,
     FattureComponent,
     ProdottiComponent,
+    SimpleWidgetsComponent,
   ],
   imports: [
     BrowserModule,
