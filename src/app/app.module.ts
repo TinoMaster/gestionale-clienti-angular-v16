@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +20,12 @@ import { ProdottiComponent } from './pages/prodotti/prodotti.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { SimpleWidgetsComponent } from './shared/components/simple-widgets/simple-widgets.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NavRouterLinksComponent } from './shared/components/nav-router-links/nav-router-links.component';
+import { ClientiNuovoComponent } from './pages/clienti/clienti-nuovo/clienti-nuovo.component';
+import { ClientiModificaComponent } from './pages/clienti/clienti-modifica/clienti-modifica.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ClienteDetailComponent } from './pages/clienti/cliente-detail/cliente-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +40,23 @@ import { SimpleWidgetsComponent } from './shared/components/simple-widgets/simpl
     FattureComponent,
     ProdottiComponent,
     SimpleWidgetsComponent,
+    NavRouterLinksComponent,
+    ClientiNuovoComponent,
+    ClientiModificaComponent,
+    ClienteDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatIconModule,
     MatSidenavModule,
     MatButtonModule,
+    MatInputModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

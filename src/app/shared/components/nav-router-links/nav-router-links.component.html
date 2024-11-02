@@ -1,0 +1,15 @@
+<nav class="d-flex flex-row align-items-center gap-2">
+  <div *ngFor="let segment of segments; let i = index">
+    <a
+      [routerLink]="i === segments.length - 1 ? currentRoute : segment"
+      [class]="
+        i === segments.length - 1
+          ? 'fw-bold h5 text-dark text-muted text-opacity-50 text-capitalize text-decoration-none'
+          : 'text-muted transition-all text-decoration-none cursor-pointer'
+      "
+    >
+      {{ segment }}
+    </a>
+    <span *ngIf="i < segments.length - 1"> / </span>
+  </div>
+</nav>

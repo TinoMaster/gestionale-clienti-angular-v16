@@ -16,13 +16,13 @@ export class SimpleWidgetsComponent {
   get backgroundColorClass(): string {
     switch (this.background_icon) {
       case 'blue':
-        return 'blue bg-gradient';
+        return 'my-bg-cyan my-shadow-lg-cyan bg-gradient';
       case 'green':
-        return 'green bg-gradient';
+        return 'my-bg-teal my-shadow-lg-teal bg-gradient';
       case 'orange':
-        return 'orange bg-gradient';
+        return 'my-bg-orange my-shadow-lg-orange bg-gradient';
       case 'pink':
-        return 'pink bg-gradient';
+        return 'my-bg-pink my-shadow-lg-pink bg-gradient';
       default:
         return 'bg-secondary bg-gradient';
     }

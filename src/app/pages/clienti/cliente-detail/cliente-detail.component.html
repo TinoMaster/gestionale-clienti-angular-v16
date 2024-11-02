@@ -1,0 +1,75 @@
+<div class="lg-container p-3 bg-white rounded shadow">
+  <!-- Información del cliente -->
+  <h2 class="h5 bg-dark bg-gradient text-white p-3 rounded-1">
+    Dettagli Cliente
+  </h2>
+  <div *ngIf="cliente" class="details_viewClient mb-4 p-1">
+    <p aria-hidden="true"><strong>Nome:</strong> {{ cliente.nome }}</p>
+    <p aria-hidden="true"><strong>Cognome:</strong> {{ cliente.cognome }}</p>
+    <p aria-hidden="true"><strong>Email:</strong> {{ cliente.email }}</p>
+  </div>
+
+  <!-- Listado de facturas -->
+  <h3 class="h6 text-dark mb-3 ms-1">Fatture</h3>
+  <ng-container *ngIf="cliente; else noFatture">
+    <div class="table-responsive mt-2 mt-lg-3 p-1">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="bg-dark bg-gradient text-white rounded-start-1">
+              Num. Fattura
+            </th>
+            <th class="bg-dark bg-gradient text-white">Scadenza</th>
+            <th class="bg-dark bg-gradient text-white">Importo</th>
+            <th class="bg-dark bg-gradient text-white">IVA</th>
+            <th class="bg-dark bg-gradient text-white rounded-end-1">Azioni</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let fattura of cliente.fatture">
+            <td>{{ fattura.numeroFattura }}</td>
+            <td>{{ fattura.scadenza }}</td>
+            <td>{{ fattura.importo }} $</td>
+            <td>{{ fattura.iva }} %</td>
+            <td>
+              <div class="d-flex gap-2">
+                <mat-icon
+                  class="icons-links text-success"
+                  [routerLink]="['/clienti', cliente.id]"
+                  >account_box</mat-icon
+                >
+                <mat-icon
+                  class="icons-links text-warning"
+                  [routerLink]="['/clienti', cliente.id, 'edit']"
+                  >edit</mat-icon
+                >
+                <mat-icon
+                  class="icons-links text-danger"
+                  (click)="deleteClient(cliente.id ?? 0)"
+                  >delete</mat-icon
+                >
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+
+  <!-- Mensaje cuando no hay facturas -->
+  <ng-template #noFatture>
+    <p class="text-muted">Questo cliente non ha Fatture nel registro.</p>
+  </ng-template>
+
+  <!-- Total de importes -->
+  <div
+    class="d-flex align-items-center justify-content-end my-4 p-3 m-1 bg-light border rounded"
+  >
+    <span><strong>Totale Importo:</strong> 5000 $</span>
+  </div>
+
+  <!-- Botón para agregar una nueva factura -->
+  <div class="text-end">
+    <a class="btn btn-primary">Aggiungere Fattura</a>
+  </div>
+</div>
