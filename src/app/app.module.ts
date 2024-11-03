@@ -26,6 +26,9 @@ import { ClientiNuovoComponent } from './pages/clienti/clienti-nuovo/clienti-nuo
 import { ClientiModificaComponent } from './pages/clienti/clienti-modifica/clienti-modifica.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClienteDetailComponent } from './pages/clienti/cliente-detail/cliente-detail.component';
+import { FatturaDetailComponent } from './pages/fatture/fattura-detail/fattura-detail.component';
+import { FattureModificaComponent } from './pages/fatture/fatture-modifica/fatture-modifica.component';
+import { FattureNuovaComponent } from './pages/fatture/fatture-nuova/fatture-nuova.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { ClienteDetailComponent } from './pages/clienti/cliente-detail/cliente-d
     ClientiNuovoComponent,
     ClientiModificaComponent,
     ClienteDetailComponent,
+    FatturaDetailComponent,
+    FattureModificaComponent,
+    FattureNuovaComponent,
   ],
   imports: [
     BrowserModule,

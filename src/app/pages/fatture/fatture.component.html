@@ -1,1 +1,179 @@
-<p>fatture works!</p>
+<div
+  class="d-flex flex-wrap-reverse align-items-center justify-content-lg-start gap-3"
+>
+  <!-- Botón de Nuevo Cliente -->
+  <button
+    routerLink="/clienti/nuovo"
+    mat-raised-button
+    class="text-white bg-dark bg-gradient"
+  >
+    <mat-icon
+      aria-hidden="false"
+      aria-label="Icona di ricerca"
+      fontIcon="group_add"
+    ></mat-icon>
+    <span class="">Aggiungi nuova fattura</span>
+  </button>
+  <!-- Botón de Filtro -->
+  <button
+    mat-raised-button
+    (click)="toggleFilter()"
+    class="border-dark border bg-transparent text-dark shadow-none"
+  >
+    <mat-icon
+      aria-hidden="false"
+      aria-label="Icona di ricerca"
+      fontIcon="filter_list"
+    ></mat-icon>
+    <span class="">Filter</span>
+  </button>
+  <!-- Barra de búsqueda -->
+  <div class="flex-grow-1 flex-md-grow-0">
+    <div class="w-100 w-md-40 d-flex gap-2 align-items-center">
+      <input
+        type="search"
+        placeholder="Cercare..."
+        class="form-control border-end-0 rounded-start py-2"
+        (keyup.enter)="searchByName(filter.value)"
+        #filter
+      />
+      <button
+        (click)="searchByName(filter.value)"
+        class="rounded shadow-sm bg-dark bg-gradient"
+        mat-mini-fab
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Icona di ricerca"
+          fontIcon="search"
+          class="text-white cursor-pointer"
+        ></mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="viewFilter" class="my-3">
+  <form
+    #filterForm="ngForm"
+    (ngSubmit)="onSubmitFilter()"
+    class="d-flex gap-3 align-items-end"
+  >
+    <!-- Campo de Importes -->
+    <div class="form-check">
+      <input
+        type="checkbox"
+        name="scadute"
+        id="scadute"
+        [(ngModel)]="formFilter.scadute"
+        #scaduto="ngModel"
+        class="form-check-input"
+      />
+      <label for="scadute" class="form-check-label">Scadute</label>
+    </div>
+
+    <div class="">
+      <label for="minImporto">Importo minimo:</label>
+      <input
+        type="number"
+        name="minImporto"
+        id="minImporto"
+        [(ngModel)]="formFilter.minImporto"
+        #minImporto="ngModel"
+        class="form-control"
+      />
+    </div>
+
+    <div class="">
+      <label for="maxImporto">Importo massimo:</label>
+      <input
+        type="number"
+        name="maxImporto"
+        id="maxImporto"
+        [(ngModel)]="formFilter.maxImporto"
+        #maxImporto="ngModel"
+        class="form-control"
+      />
+    </div>
+
+    <!-- Campos de Fecha de Vencimiento -->
+    <!-- <div class="">
+      <label for="startDate">Scadenza Inizio:</label>
+      <input
+        type="date"
+        name="startDate"
+        id="startDate"
+        [(ngModel)]="formFilter.startDate"
+        #startDate="ngModel"
+        class="form-control"
+      />
+    </div>
+
+    <div class="">
+      <label for="endDate">Scadenza Fine:</label>
+      <input
+        type="date"
+        name="endDate"
+        id="endDate"
+        [(ngModel)]="formFilter.endDate"
+        #endDate="ngModel"
+        class="form-control"
+      />
+    </div> -->
+
+    <div class="">
+      <button
+        mat-raised-button
+        type="submit"
+        class="text-white bg-dark bg-gradient"
+        [disabled]="!filterForm.valid || !filterForm.dirty"
+      >
+        Filtrare
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="table-responsive my-3">
+  <table class="table table-striped">
+    <thead class="table-light">
+      <tr>
+        <th class="bg-dark bg-gradient text-white rounded-start-1">Numero Fattura</th>
+        <th class="bg-dark bg-gradient text-white">Importo</th>
+        <th class="bg-dark bg-gradient text-white">IVA</th>
+        <th class="bg-dark bg-gradient text-white">Scadenza</th>
+        <th class="bg-dark bg-gradient text-white rounded-end-1">Azioni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fattura of filteredFattureList">
+        <td>{{ fattura.numeroFattura }}</td>
+        <td>{{ fattura.importo }}</td>
+        <td>{{ fattura.iva }}</td>
+        <td>{{ fattura.scadenza | date }}</td>
+        <td>
+          <div class="d-flex gap-2">
+            <mat-icon
+              class="icons-links text-success"
+              [routerLink]="['/fatture', fattura.id]"
+              >account_box</mat-icon
+            >
+            <mat-icon
+              class="icons-links text-warning"
+              [routerLink]="['/fatture', 'modifica', fattura.id]"
+              >edit</mat-icon
+            >
+            <mat-icon
+              class="icons-links text-danger"
+              (click)="deleteFattura(fattura.id ?? 0)"
+              >delete</mat-icon
+            >
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="filteredFattureList?.length === 0">
+        <td colspan="7" class="text-center">No hay facturas disponibles</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

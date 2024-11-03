@@ -11,15 +11,6 @@ export class ClientiComponent {
   clientiList!: ClientiDTO[];
   filteredList!: ClientiDTO[];
 
-  displayedColumns: string[] = [
-    'nome',
-    'cognome',
-    'email',
-    'Q.ta fatture',
-    'Q.ta prodotti',
-    'dettagli',
-  ];
-
   constructor(private clientiService: ClientiService) {
     this.clientiService.getAllClients().subscribe((clienti) => {
       this.clientiList = clienti;
@@ -27,7 +18,7 @@ export class ClientiComponent {
     });
   }
 
-  filteredByName(name: string) {
+  filtered(name: string) {
     if (!name) this.filteredList = this.clientiList;
     else {
       this.filteredList = this.clientiList.filter((clienti) => {

@@ -84,4 +84,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   box-shadow: 0 0.5rem 1rem rgba(13, 110, 253, 0.351);
 }
 
+.icons-links{
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 5px;
+}
 

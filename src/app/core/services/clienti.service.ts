@@ -20,8 +20,17 @@ export class ClientiService {
   }
 
   saveClient(clienteToSave: ClientiDTO): Observable<ClientiDTO> {
-    console.log(clienteToSave);
     return this.httpClient.post<ClientiDTO>(this.url, clienteToSave);
+  }
+
+  updateClient(
+    id: number,
+    clienteToUpdate: ClientiDTO
+  ): Observable<ClientiDTO> {
+    return this.httpClient.post<ClientiDTO>(
+      `${this.url}/update/${id}`,
+      clienteToUpdate
+    );
   }
 
   deleteClient(id: number): Observable<boolean> {
