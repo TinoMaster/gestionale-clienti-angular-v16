@@ -1,4 +1,4 @@
-<div class="sm-container w-100 mx-auto p-4 bg-white rounded my-shadow-md-blue">
+<div class="sm-container w-100 mx-auto p-4 bg-white rounded shadow">
   <h4 class="h4 mb-4 text-center text-dark">Creazione Cliente</h4>
   <form [formGroup]="formNuovoCliente" (ngSubmit)="saveCliente()">
     <div class="mb-3">
@@ -67,7 +67,7 @@
     <div class="d-grid">
       <button
         type="submit"
-        class="btn btn-primary"
+        class="btn btn-dark bg-gradient"
         [disabled]="!formNuovoCliente.valid"
       >
         Creare Cliente
@@ -76,6 +76,6 @@
   </form>
 
   <div class="mt-4 text-center">
-    <a routerLink="/clienti" class="text-primary">Tornare Indietro</a>
+    <a routerLink="/clienti" class="text-dark text-decoration-none">Tornare Indietro</a>
   </div>
 </div>

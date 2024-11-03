@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FattureComponent } from './fatture.component';
 import { FattureNuovaComponent } from './fatture-nuova/fatture-nuova.component';
 import { FattureModificaComponent } from './fatture-modifica/fatture-modifica.component';
+import { FatturaDetailComponent } from './fattura-detail/fattura-detail.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    component: FattureNuovaComponent,
+    component: FatturaDetailComponent,
   },
 ];
 

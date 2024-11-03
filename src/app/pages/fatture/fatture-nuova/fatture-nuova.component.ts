@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import ClientiDTO from 'src/app/core/models/dto/clienti-dto.model';
+import { FattureDto } from 'src/app/core/models/dto/fatture-dto.model';
 import { ClientiService } from 'src/app/core/services/clienti.service';
 import { FattureService } from 'src/app/core/services/fatture.service';
 
@@ -33,5 +34,19 @@ export class FattureNuovaComponent implements OnInit {
     });
   }
 
-  saveFattura() {}
+  saveFattura() {
+    const fatturaToSave: FattureDto = {
+      numeroFattura: this.formNuovaFattura.value['numeroFattura'],
+      iva: this.formNuovaFattura.value['iva'],
+      importo: 0,
+      scadenza: this.formNuovaFattura.value['scadenza'],
+      cliente: this.formNuovaFattura.value['cliente'],
+    };
+
+    this.fattureService.saveFattura(fatturaToSave).subscribe(() => {
+      if (fatturaToSave) {
+        this.router.navigate(['/fatture']);
+      }
+    });
+  }
 }

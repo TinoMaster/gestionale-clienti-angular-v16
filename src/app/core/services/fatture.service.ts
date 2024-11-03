@@ -29,6 +29,24 @@ export class FattureService {
     return this.httpClient.get<FattureDto[]>(this.url, { params });
   }
 
+  getFatturaById(id: number): Observable<FattureDto> {
+    return this.httpClient.get<FattureDto>(`${this.url}/${id}`);
+  }
+
+  saveFattura(fatturaToSave: FattureDto): Observable<FattureDto> {
+    return this.httpClient.post<FattureDto>(this.url, fatturaToSave);
+  }
+
+  updateFattura(
+    id: number,
+    fatturaToUpdate: FattureDto
+  ): Observable<FattureDto> {
+    return this.httpClient.post<FattureDto>(
+      `${this.url}/update/${id}`,
+      fatturaToUpdate
+    );
+  }
+
   deleteFattura(id: number): Observable<boolean> {
     return this.httpClient.get<boolean>(`${this.url}/delete/${id}`);
   }

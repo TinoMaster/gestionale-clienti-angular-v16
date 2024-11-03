@@ -138,10 +138,15 @@
   <table class="table table-striped">
     <thead class="table-light">
       <tr>
-        <th class="bg-dark bg-gradient text-white rounded-start-1">Numero Fattura</th>
+        <th class="bg-dark bg-gradient text-white rounded-start-1">
+          Numero Fattura
+        </th>
         <th class="bg-dark bg-gradient text-white">Importo</th>
         <th class="bg-dark bg-gradient text-white">IVA</th>
         <th class="bg-dark bg-gradient text-white">Scadenza</th>
+        <th class="bg-dark bg-gradient text-white rounded-end-1">
+          Q.ta prodotti
+        </th>
         <th class="bg-dark bg-gradient text-white rounded-end-1">Azioni</th>
       </tr>
     </thead>
@@ -151,6 +156,7 @@
         <td>{{ fattura.importo }}</td>
         <td>{{ fattura.iva }}</td>
         <td>{{ fattura.scadenza | date }}</td>
+        <td>{{ fattura.prodotti?.length || 0 }}</td>
         <td>
           <div class="d-flex gap-2">
             <mat-icon

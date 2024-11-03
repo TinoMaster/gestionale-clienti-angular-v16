@@ -1,1 +1,109 @@
-<p>fatture-modifica works!</p>
+<div class="sm-container w-100 mx-auto p-4 bg-white rounded shadow">
+  <h4 class="h4 mb-4 text-center text-dark">Creazione Fattura</h4>
+  <form [formGroup]="formModificaFattura" (ngSubmit)="updateFattura()">
+    <div class="mb-3">
+      <label for="numeroFattura" class="form-label">Numero Fattura:</label>
+      <input
+        type="text"
+        id="numeroFattura"
+        name="numeroFattura"
+        class="form-control"
+        placeholder="Introdurre l'identificativo della fattura"
+        formControlName="numeroFattura"
+      />
+      <p
+        class="alert alert-danger"
+        *ngIf="
+          formModificaFattura.controls['numeroFattura'].invalid &&
+          formModificaFattura.controls['numeroFattura'].touched
+        "
+      >
+        Questo campo è obbligatorio
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="iva" class="form-label">Iva:</label>
+      <input
+        type="text"
+        id="iva"
+        name="iva"
+        class="form-control"
+        placeholder="Introdurre iva"
+        formControlName="iva"
+      />
+      <p
+        class="alert alert-danger"
+        *ngIf="
+          formModificaFattura.controls['iva'].invalid &&
+          formModificaFattura.controls['iva'].touched
+        "
+      >
+        Questo campo è obbligatorio
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="scadenza" class="form-label">Scadenza:</label>
+      <input
+        type="date"
+        id="scadenza"
+        name="scadenza"
+        class="form-control"
+        placeholder="Introdurre la data di scadenza"
+        formControlName="scadenza"
+      />
+      <p
+        class="alert alert-danger"
+        *ngIf="
+          formModificaFattura.controls['scadenza'].invalid &&
+          formModificaFattura.controls['scadenza'].touched
+        "
+      >
+        Questo campo è obbligatorio
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="iva" class="form-label">Cliente:</label>
+      <select
+        class="form-select"
+        name="cliente"
+        formControlName="cliente"
+        aria-label="Default select example"
+      >
+        <option class="text-secondary" value="" selected>
+          Selezionare un cliente
+        </option>
+        <option *ngFor="let cliente of clientiList" [value]="cliente.id">
+          {{ cliente.nome }} {{ cliente.cognome }}
+        </option>
+      </select>
+      <p
+        class="alert alert-danger"
+        *ngIf="
+          formModificaFattura.controls['cliente'].invalid &&
+          formModificaFattura.controls['cliente'].touched
+        "
+      >
+        Questo campo è obbligatorio
+      </p>
+    </div>
+
+    <div class="d-grid">
+      <button
+        type="submit"
+        class="btn btn-dark bg-gradient"
+        [disabled]="!formModificaFattura.valid || !formModificaFattura.dirty"
+      >
+        Modifica Fattura
+      </button>
+    </div>
+  </form>
+
+  <div class="mt-4 text-center">
+    <a routerLink="/clienti" class="text-dark text-decoration-none"
+      >Tornare Indietro</a
+    >
+  </div>
+</div>
