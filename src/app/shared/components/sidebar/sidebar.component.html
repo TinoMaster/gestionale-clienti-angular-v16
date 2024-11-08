@@ -7,15 +7,16 @@
       <span class="h4" routerLink="/dashboard">Gestionale Clienti</span>
     </button>
   </div>
-  <!-- Links -->
+  <!--  Nav Links -->
   <hr />
   <nav class="d-flex flex-column gap-2">
     <p class="text-white h6">pages</p>
     <button
-    class="d-flex justify-content-start align-items-center text-white mx-1 rounded-1"
+      *ngFor="let link of navLinks"
+      class="d-flex justify-content-start align-items-center text-white mx-1 rounded-1"
       routerLinkActive="bg-white bg-opacity-10 bg-gradient"
       mat-button
-      routerLink="/dashboard"
+      [routerLink]="'/' + link.route"
     >
       <mat-icon
         aria-hidden="false"
@@ -24,47 +25,16 @@
       >
       </mat-icon>
 
-      <span> dashboard </span>
+      <span> {{ link.name }} </span>
     </button>
-
-    <button
-      mat-button
-      routerLinkActive="bg-white bg-opacity-10 bg-gradient"
-      class="d-flex justify-content-start align-items-center mx-1 text-white rounded-1"
-      routerLink="/clienti"
-    >
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Example home icon"
-        fontIcon="groups"
-      >
-      </mat-icon>
-
-      <span> clienti </span>
-    </button>
-
-    <button
-      mat-button
-      routerLinkActive="bg-white bg-opacity-10 bg-gradient"
-      class="d-flex justify-content-start align-items-center mx-1 text-white rounded-1"
-      routerLink="/fatture"
-    >
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Example home icon"
-        fontIcon="receipt_long"
-      >
-      </mat-icon>
-
-      <span> fatture </span>
-    </button>
-
+    <!-- Auth Links -->
     <hr />
     <p class="text-white h6">auth pages</p>
     <button
+      *ngFor="let link of authLinks"
       mat-button
       class="d-flex justify-content-start align-items-center mx-1 text-white rounded-1"
-      routerLink="/login"
+      [routerLink]="'/' + link.route"
     >
       <mat-icon
         aria-hidden="false"
@@ -73,22 +43,7 @@
       >
       </mat-icon>
 
-      <span> sign in </span>
-    </button>
-
-    <button
-      mat-button
-      class="d-flex justify-content-start align-items-center mx-1 text-white rounded-1"
-      routerLink="/signup"
-    >
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Example home icon"
-        fontIcon="person_add"
-      >
-      </mat-icon>
-
-      <span> sign up </span>
+      <span> {{ link.name }} </span>
     </button>
   </nav>
 </aside>

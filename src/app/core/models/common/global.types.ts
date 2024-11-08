@@ -3,3 +3,8 @@ export interface FormFilter {
   minImporto?: number;
   maxImporto?: number;
 }
+
+export interface NavLinks {
+  name: string;
+  route: string;
+}

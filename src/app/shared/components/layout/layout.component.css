@@ -2,3 +2,13 @@
   width: 100vw;
   height: 100vh;
 }
+
+.btn-toggle-sidebar{
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .btn-toggle-sidebar{
+    display: block;
+  }
+}
