@@ -1,41 +1,62 @@
-<footer class="p-3 bg-light text-center text-md-start">
+<footer class="p-3 text-center text-md-start my-bg-dark bg-gradient">
   <div
     class="container d-flex flex-wrap align-items-center justify-content-center gap-3 px-2"
   >
-    <span class="text-muted"> © 2023, Created by Software Industriale. </span>
-    <ul class="nav gap-3">
-      <li class="nav-item">
-        <a
-          href="https://www.creative-tim.com"
-          target="_blank"
-          class="nav-link p-0 text-muted"
-          >Creative Tim</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          href="https://www.creative-tim.com/presentation"
-          target="_blank"
-          class="nav-link p-0 text-muted"
-          >About Us</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          href="https://www.creative-tim.com/blog"
-          target="_blank"
-          class="nav-link p-0 text-muted"
-          >Blog</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          href="https://www.creative-tim.com/license"
-          target="_blank"
-          class="nav-link p-0 text-muted"
-          >License</a
-        >
-      </li>
-    </ul>
+    <span class="text-muted text-white-50">
+      © 2023, Created by Software Industriale.
+    </span>
+  </div>
+
+  <div class="d-grid gap-6 d-md-flex justify-content-md-around text-white-50">
+    <!-- División de Páginas -->
+    <div class="">
+      <h5 class="bold">Páginas</h5>
+      <ul class="list-unstyled">
+        <li *ngFor="let page of pageLinks">
+          <a [routerLink]="page.route" class="text-decoration-none">{{
+            page.name
+          }}</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- División de Descripción -->
+    <div class="">
+      <h5 class="bold">Descripción</h5>
+      <p class="mb-0">
+        {{ description }}
+      </p>
+    </div>
+
+    <!-- División de Contactos -->
+    <div class="">
+      <h5 class="bold">Social</h5>
+      <ul class="d-flex flex-wrap list-unstyled">
+        <li class="d-flex gap-2 justify-content-center w-100">
+          <a
+            *ngFor="let contact of socialMediaLinks"
+            [routerLink]="contact.link"
+            class="text-decoration-none"
+          >
+            {{ contact.name }}
+          </a>
+        </li>
+      </ul>
+      <h5 class="bold">Contatti</h5>
+      <ul class="d-flex flex-wrap list-unstyled gap-3">
+        <li class="d-flex gap-2 justify-content-center w-100">
+          <a
+            class="text-decoration-none d-flex align-items-center"
+            href="mailto:{{ email }}"
+            ><mat-icon class="icon-link">mail</mat-icon>: {{ email }}</a
+          >
+          <a
+            class="text-decoration-none d-flex align-items-center"
+            href="tel:{{ phone }}"
+            ><mat-icon class="icon-link">call</mat-icon>: {{ phone }}</a
+          >
+        </li>
+      </ul>
+    </div>
   </div>
 </footer>

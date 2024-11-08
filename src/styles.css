@@ -1,5 +1,5 @@
 :root,
-[data-bs-theme=light] {
+[data-bs-theme="light"] {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
@@ -9,7 +9,7 @@
   --bs-yellow: #ffc107;
   --bs-green: #198754;
   --bs-teal: #20c997;
-  --bs-cyan: #0dcaf0;
+  --bs-cyan: hwb(190 6% 15%);
   --bs-black: #000;
   --bs-white: #fff;
   --bs-gray: #6c757d;
@@ -20,73 +20,129 @@
   --bs-warning: #ffc107;
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
-  --bs-dark: #212529;
-  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+  --bs-dark: #212926;
+  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --bs-gradient: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0)
+  );
   --bs-body-font-family: var(--bs-font-sans-serif);
+}
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #e0e0e0;
 }
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.sm-container {
-  max-width: 540px;
-  margin: 0 auto;
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.md-container {
-  max-width: 720px;
-  margin: 0 auto;
+:root .my-bg-dark {
+  background-color: rgb(26, 38, 46);
 }
 
-.lg-container {
-  max-width: 960px;
-  margin: 0 auto;
+:root .my-text-dark {
+  color: rgb(26, 38, 46);
 }
 
-.my-bg-orange {
-  background-color: var(--bs-orange);
+:root .my-bg-primary {
+  background-color: rgb(14, 100, 117);
 }
 
-.my-shadow-lg-orange {
-  box-shadow: 0 0.5rem 1rem rgba(252, 126, 8, 0.351);
+:root .my-text-primary {
+  color: rgb(14, 100, 117);
 }
 
-.my-bg-pink {
+:root .my-bg-secondary {
   background-color: var(--bs-pink);
 }
 
-.my-shadow-lg-pink {
+:root .my-text-secondary {
+  color: var(--bs-pink);
+}
+
+:root .my-btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(13, 109, 253, 0.247);
+  background-color: rgb(14, 100, 117);
+  color: white;
+  border: none;
+}
+
+:root .my-btn-primary:hover {
+  background-color: rgb(13, 86, 100);
+  color: white;
+  box-shadow: none;
+}
+
+:root .my-btn-border-primary {
+  border: 1px solid rgb(14, 100, 117);
+  color: rgb(14, 100, 117);
+  box-shadow: none;
+}
+
+:root .my-btn-border-primary:hover {
+  background-color: rgb(14, 100, 117);
+  box-shadow: none;
+}
+
+:root .my-text-primary {
+  color: rgb(14, 100, 117);
+}
+
+:root .my-bg-orange {
+  background-color: var(--bs-orange);
+}
+
+:root .my-shadow-lg-orange {
+  box-shadow: 0 0.5rem 1rem rgba(252, 126, 8, 0.351);
+}
+
+:root .my-bg-pink {
+  background-color: var(--bs-pink);
+}
+
+:root .my-shadow-lg-pink {
   box-shadow: 0 0.5rem 1rem rgba(212, 51, 132, 0.351);
 }
 
-.my-bg-teal {
+:root .my-bg-teal {
   background-color: var(--bs-teal);
 }
 
-.my-shadow-lg-teal {
+:root .my-shadow-lg-teal {
   box-shadow: 0 0.5rem 1rem rgba(32, 201, 150, 0.351);
 }
 
-.my-bg-cyan {
+:root .my-bg-cyan {
   background-color: var(--bs-cyan);
 }
 
-.my-shadow-lg-cyan {
+:root .my-shadow-lg-cyan {
   box-shadow: 0 0.5rem 1rem rgba(21, 181, 255, 0.351);
 }
 
-.my-shadow-md-blue{
+:root .my-shadow-md-blue {
   box-shadow: 0 0.5rem 1rem rgba(13, 110, 253, 0.351);
 }
 
-.icons-links{
+.icons-links {
   cursor: pointer;
   font-size: 20px;
   margin-right: 5px;
 }
-

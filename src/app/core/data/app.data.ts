@@ -1,4 +1,4 @@
-import { NavLinks } from '../models/common/global.types';
+import { NavLinks, SocialMediaLinks } from '../models/common/global.types';
 
 export const navLinks: NavLinks[] = [
   {
@@ -23,5 +23,31 @@ export const authLinks: NavLinks[] = [
   {
     name: 'Register',
     route: 'register',
+  },
+];
+
+export const footerDescription =
+  'Benvenuto in Gestionale Clienti, un sistema di gestione di clienti e fatture, se vuoi aiutarti, contattaci qui.';
+
+export const socialContacts: SocialMediaLinks[] = [
+  {
+    name: 'Facebook',
+    link: 'https://facebook.com',
+    iconName: 'facebook',
+  },
+  {
+    name: 'Twitter',
+    link: 'https://twitter.com',
+    iconName: 'twitter',
+  },
+  {
+    name: 'Instagram',
+    link: 'https://instagram.com',
+    iconName: 'instagram',
+  },
+  {
+    name: 'LinkedIn',
+    link: 'https://linkedin.com',
+    iconName: 'LinkedIn',
   },
 ];

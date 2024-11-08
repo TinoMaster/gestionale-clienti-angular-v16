@@ -1,0 +1,11 @@
+footer ul li a {
+  color: #6c757d;
+}
+
+footer ul li a:hover {
+  color: #000;
+}
+
+footer .bold {
+  font-weight: bold;
+}

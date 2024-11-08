@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import ClientiDTO from 'src/app/core/models/dto/clienti-dto.model';
 import { FattureDto } from 'src/app/core/models/dto/fatture-dto.model';
+import { ProdottoDto } from 'src/app/core/models/dto/prodotto-dto.model';
 import { ClientiService } from 'src/app/core/services/clienti.service';
 import { FattureService } from 'src/app/core/services/fatture.service';
 
@@ -22,10 +23,18 @@ export class FatturaDetailComponent {
   imponibileGenerale: number = 0;
   totaleGenerale: number = 0;
 
+  displayedColumns: string[] = [
+    'nome',
+    'descrizione',
+    'prezzo',
+    'quantita',
+    'totale',
+  ];
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private fattureService: FattureService,
-    private clientiService: ClientiService,
+    private clientiService: ClientiService
   ) {}
 
   idFattura!: number;
@@ -35,6 +44,7 @@ export class FatturaDetailComponent {
       this.idFattura = params['id'];
     });
     this.fattureService.getFatturaById(this.idFattura).subscribe((data) => {
+      console.log(data);
       this.fattura = data;
       this.calcolaTotali();
       this.clientiService
@@ -57,4 +67,6 @@ export class FatturaDetailComponent {
         this.imponibileGenerale * (1 + this.fattura.iva / 100);
     }
   }
+
+  deleteFattura() {}
 }

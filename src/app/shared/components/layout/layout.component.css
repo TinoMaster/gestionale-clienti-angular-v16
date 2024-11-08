@@ -1,3 +1,11 @@
+.root-section{
+  min-height: 100vh;
+}
+
+.main-section{
+  min-height: 75vh;
+}
+
 .layout-container {
   width: 100vw;
   height: 100vh;

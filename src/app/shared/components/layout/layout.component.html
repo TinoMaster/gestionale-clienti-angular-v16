@@ -1,27 +1,25 @@
 <mat-drawer-container class="layout-container">
-  <mat-drawer
-    class="p-1 bg-light border-0"
-    #drawer
-    mode="over"
-    opened="false"
-  >
+  <mat-drawer class="p-1 bg-dark" #drawer mode="over" opened="false">
     <app-sidebar></app-sidebar>
   </mat-drawer>
-  <section class="h-100 p-1">
+  <section class="root-section">
     <div class="d-flex flex-column h-100 gap-4">
-      <app-header>
-        <button
-          class="btn-toggle-sidebar"
-          mat-icon-button
-          (click)="drawer.toggle()"
-        >
-          <mat-icon class="text-white text-opacity-75">menu</mat-icon>
-        </button>
-      </app-header>
-      <div class="px-3 px-lg-5">
+      <div class="position-sticky top-0 w-100 z-1">
+        <app-header>
+          <button
+            class="btn-toggle-sidebar"
+            mat-icon-button
+            (click)="drawer.toggle()"
+          >
+            <mat-icon class="text-white text-opacity-75">menu</mat-icon>
+          </button>
+        </app-header>
+      </div>
+
+      <div class="px-3 px-lg-5 container">
         <app-nav-router-links></app-nav-router-links>
       </div>
-      <div class="flex-grow-1 px-lg-5 container">
+      <div class="flex-grow-1 px-lg-5 container main-section">
         <ng-content></ng-content>
       </div>
       <div class="">

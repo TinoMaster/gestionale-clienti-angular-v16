@@ -1,108 +1,26 @@
-<div class="container p-3 bg-white rounded shadow">
-  <div
-    class="d-flex justify-content-between align-items-center bg-dark bg-gradient text-white rounded p-3"
-  >
-    <span class="h4 pt-1">Dettagli della Fattura</span>
-    <div>
-      <a
-        [routerLink]="['/fatture/edit', fattura.id]"
-        class="btn btn-warning btn-sm me-2"
-        >Modifica</a
+<app-box-detail
+  [dataSource]="fattura.prodotti || []"
+  title="Dettagli Fattura"
+  tableTitle="Prodotti"
+  [modifyRoute]="'/fatture/modifica/' + fattura.id"
+  [deleteFunction]="deleteFattura"
+  [displayedColumns]="displayedColumns"
+  [imponibile]="imponibileGenerale"
+  [iva]="fattura.iva"
+  [totale]="totaleGenerale"
+  addButtonRoute="/fatture/prodotti/nuovo"
+  [addButtonLabel]="'Aggiungi Prodotto'"
+>
+  <div class="details">
+    <p><strong>Numero Fattura:</strong> {{ fattura.numeroFattura }}</p>
+    <p><strong>Importo:</strong> {{ fattura.importo | currency }}</p>
+    <p><strong>IVA:</strong> {{ fattura.iva }} %</p>
+    <p><strong>Scadenza:</strong> {{ fattura.scadenza | date }}</p>
+    <p class="d-flex gap-1">
+      <strong>Cliente:</strong>
+      <a [routerLink]="['/clienti', cliente.id]" class="my-text-primary"
+        >{{ cliente.nome }} {{ cliente.cognome }}</a
       >
-      <a
-        [routerLink]="['/fatture/delete', fattura.id, cliente.id]"
-        class="btn btn-danger btn-sm"
-        >Eliminare</a
-      >
-    </div>
+    </p>
   </div>
-
-  <div class="">
-    <div class="details my-3 p-1">
-      <p><strong>Numero Fattura:</strong> {{ fattura.numeroFattura }}</p>
-      <p><strong>Importo:</strong> {{ fattura.importo | currency }}</p>
-      <p><strong>IVA:</strong> {{ fattura.iva }} %</p>
-      <p><strong>Scadenza:</strong> {{ fattura.scadenza | date }}</p>
-      <p class="d-flex gap-1">
-        <strong>Cliente:</strong>
-        <a [routerLink]="['/clienti', cliente.id]" class="text-info"
-          >{{ cliente.nome }} {{ cliente.cognome }}</a
-        >
-      </p>
-    </div>
-
-    <h2 class="h5 p-1">Prodotti nella Fattura</h2>
-    <div
-      *ngIf="fattura.prodotti && fattura.prodotti.length > 0; else noProducts"
-    >
-      <table class="table table-hover table-striped">
-        <thead>
-          <tr>
-            <th class="bg-dark bg-gradient text-white rounded-start-1">
-              Nome Prodotto
-            </th>
-            <th class="bg-dark bg-gradient text-white">Descrizione</th>
-            <th class="bg-dark bg-gradient text-white">Prezzo</th>
-            <th class="bg-dark bg-gradient text-white">Q.ta</th>
-            <th class="bg-dark bg-gradient text-white">Totale</th>
-            <th class="bg-dark bg-gradient text-white">Tot+IVA</th>
-            <th class="bg-dark bg-gradient text-white rounded-end-1">Azioni</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let p of fattura.prodotti">
-            <td>{{ p.name }}</td>
-            <td>{{ p.description }}</td>
-            <td>{{ p.price | currency }}</td>
-            <td>{{ p.quantita }}</td>
-            <td>{{ p.price * p.quantita | currency }}</td>
-            <td>
-              {{
-                p.price * p.quantita +
-                  (p.price * p.quantita * fattura.iva) / 100 | currency
-              }}
-            </td>
-            <td class="">
-              <div class="d-flex gap-2">
-                <mat-icon
-                  class="icons-links text-success"
-                  [routerLink]="['/clienti', cliente.id]"
-                  >pallet</mat-icon
-                >
-                <mat-icon
-                  class="icons-links text-warning"
-                  [routerLink]="['/clienti', cliente.id, 'edit']"
-                  >edit</mat-icon
-                >
-                <mat-icon class="icons-links text-danger">delete</mat-icon>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <ng-template #noProducts>
-      <p class="text-muted">Questa fattura non ha prodotti.</p>
-    </ng-template>
-
-    <div class="text-end mt-3">
-      <a
-        [routerLink]="['/prodotti', 'create', fattura.id]"
-        class="btn btn-dark bg-gradient"
-        >Aggiungere Prodotto</a
-      >
-    </div>
-
-    <div
-      class="d-flex justify-content-end align-items-center gap-3 mt-4 p-3 bg-light border rounded"
-    >
-      <span
-        ><strong>IMPONIBILE:</strong> {{ imponibileGenerale | currency }}</span
-      >
-      <span><strong>IVA:</strong> {{ fattura.iva }} %</span>
-      <span class="text-success"
-        ><strong>TOTALE: {{ totaleGenerale | currency }}</strong>
-      </span>
-    </div>
-  </div>
-</div>
+</app-box-detail>

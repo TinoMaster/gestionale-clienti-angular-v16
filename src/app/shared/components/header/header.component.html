@@ -1,7 +1,7 @@
 <header
-  class="d-flex justify-content-between align-items-center p-1 bg-dark bg-gradient shadow-sm rounded-1"
+  class="d-flex justify-content-between align-items-center p-1 my-bg-dark bg-gradient shadow-sm"
 >
-  <nav class="navbar navbar-expand-lg bg-transparent" data-bs-theme="dark">
+  <nav class="navbar navbar-expand-lg bg-transparent w-100" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">{{ title }}</a>
       <ng-content select=".btn-toggle-sidebar"></ng-content>
@@ -15,22 +15,6 @@
               [routerLink]="link.route"
               >{{ link.name }}</a
             >
-          </li>
-
-          <li class="nav-item dropdown">
-            <button
-              class="nav-link dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Dropdown link
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
           </li>
         </ul>
       </div>

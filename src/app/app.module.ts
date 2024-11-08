@@ -29,6 +29,7 @@ import { ClienteDetailComponent } from './pages/clienti/cliente-detail/cliente-d
 import { FatturaDetailComponent } from './pages/fatture/fattura-detail/fattura-detail.component';
 import { FattureModificaComponent } from './pages/fatture/fatture-modifica/fatture-modifica.component';
 import { FattureNuovaComponent } from './pages/fatture/fatture-nuova/fatture-nuova.component';
+import { BoxDetailComponent } from './shared/components/box-detail/box-detail.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { FattureNuovaComponent } from './pages/fatture/fatture-nuova/fatture-nuo
     FatturaDetailComponent,
     FattureModificaComponent,
     FattureNuovaComponent,
+    BoxDetailComponent,
   ],
   imports: [
     BrowserModule,

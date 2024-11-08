@@ -1,8 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { FattureDto } from '../models/dto/fatture-dto.model';
+import { map, Observable } from 'rxjs';
+import { FattureDto, FattureRequest } from '../models/dto/fatture-dto.model';
 import { FormFilter } from '../models/common/global.types';
+import { ProdottoDto, ProdottoRequest } from '../models/dto/prodotto-dto.model';
+import { mapFatturaToDto } from '../mappers/fattura.mapper';
 
 @Injectable({
   providedIn: 'root',
@@ -13,24 +15,17 @@ export class FattureService {
   constructor(private httpClient: HttpClient) {}
 
   getAllFatture(filters?: FormFilter): Observable<FattureDto[]> {
-    let params = new HttpParams();
+    const params = this.buildFilterParams(filters);
 
-    // Agregar parámetros de filtro solo si están definidos
-    if (filters?.scadute !== undefined) {
-      params = params.set('scadute', filters.scadute.toString());
-    }
-    if (filters?.minImporto !== undefined && filters?.minImporto > 0) {
-      params = params.set('minimporto', filters.minImporto.toString());
-    }
-    if (filters?.maxImporto !== undefined && filters?.maxImporto > 0) {
-      params = params.set('maximporto', filters.maxImporto.toString());
-    }
-
-    return this.httpClient.get<FattureDto[]>(this.url, { params });
+    return this.httpClient
+      .get<FattureRequest[]>(this.url, { params })
+      .pipe(map((fatture: FattureRequest[]) => fatture.map(mapFatturaToDto)));
   }
 
   getFatturaById(id: number): Observable<FattureDto> {
-    return this.httpClient.get<FattureDto>(`${this.url}/${id}`);
+    return this.httpClient
+      .get<FattureRequest>(`${this.url}/${id}`)
+      .pipe(map((fattura: FattureRequest) => mapFatturaToDto(fattura)));
   }
 
   saveFattura(fatturaToSave: FattureDto): Observable<FattureDto> {
@@ -49,5 +44,21 @@ export class FattureService {
 
   deleteFattura(id: number): Observable<boolean> {
     return this.httpClient.get<boolean>(`${this.url}/delete/${id}`);
+  }
+
+  private buildFilterParams(filters?: FormFilter): HttpParams {
+    let params = new HttpParams();
+
+    if (filters?.scadute !== undefined) {
+      params = params.set('scadute', filters.scadute.toString());
+    }
+    if (filters?.minImporto !== undefined && filters?.minImporto > 0) {
+      params = params.set('minimporto', filters.minImporto.toString());
+    }
+    if (filters?.maxImporto !== undefined && filters?.maxImporto > 0) {
+      params = params.set('maximporto', filters.maxImporto.toString());
+    }
+
+    return params;
   }
 }
