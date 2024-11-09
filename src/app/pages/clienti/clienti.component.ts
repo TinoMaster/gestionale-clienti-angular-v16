@@ -30,7 +30,7 @@ export class ClientiComponent implements OnInit {
     });
   }
 
-  filtered(name: string) {
+  filtered = (name: string) => {
     if (!name) this.filteredList = this.clientiList;
     else {
       this.filteredList = this.clientiList.filter((clienti) => {
@@ -45,7 +45,7 @@ export class ClientiComponent implements OnInit {
         }
       });
     }
-  }
+  };
 
   onViewClient = (id: number) => {
     this.router.navigate(['/clienti/', id]);

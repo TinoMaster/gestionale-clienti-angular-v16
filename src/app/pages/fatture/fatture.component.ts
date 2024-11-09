@@ -35,24 +35,24 @@ export class FattureComponent {
     });
   }
 
-  toggleFilter() {
+  toggleFilter = () => {
     this.filteredFattureList = this.fattureList;
     this.formFilter = {
       scadute: false,
       minImporto: 0,
       maxImporto: 0,
     };
-  }
+  };
 
-  onViewFattura(id: number) {
+  onViewFattura = (id: number) => {
     this.router.navigate(['/fatture/', id]);
-  }
+  };
 
-  onEditFattura(id: number) {
+  onEditFattura = (id: number) => {
     this.router.navigate(['/fatture', 'modifica', id]);
-  }
+  };
 
-  onDeleteFattura(id: number) {
+  onDeleteFattura = (id: number) => {
     this.fattureService.deleteFattura(id).subscribe((response) => {
       if (response) {
         this.filteredFattureList = this.filteredFattureList.filter(
@@ -60,9 +60,9 @@ export class FattureComponent {
         );
       }
     });
-  }
+  };
 
-  searchByName(name: string) {
+  searchByName = (name: string) => {
     if (!name) this.filteredFattureList = this.fattureList;
     else {
       this.filteredFattureList = this.fattureList.filter((fatture) => {
@@ -73,7 +73,7 @@ export class FattureComponent {
         }
       });
     }
-  }
+  };
 
   onSubmitFilter() {
     this.fattureService.getAllFatture(this.formFilter).subscribe((fatture) => {

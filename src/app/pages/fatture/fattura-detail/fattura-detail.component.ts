@@ -29,6 +29,7 @@ export class FatturaDetailComponent {
     'prezzo',
     'quantita',
     'totale',
+    'azioni',
   ];
 
   constructor(
@@ -44,7 +45,6 @@ export class FatturaDetailComponent {
       this.idFattura = params['id'];
     });
     this.fattureService.getFatturaById(this.idFattura).subscribe((data) => {
-      console.log(data);
       this.fattura = data;
       this.calcolaTotali();
       this.clientiService

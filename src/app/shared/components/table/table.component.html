@@ -34,6 +34,12 @@
           <span *ngSwitchCase="'importo'">{{
             element[column] | currency
           }}</span>
+          <span *ngSwitchCase="'totale'">{{
+            element[column] | currency
+          }}</span>
+          <span *ngSwitchCase="'prezzo'">{{
+            element[column] | currency
+          }}</span>
           <span *ngSwitchCase="'scadenza'">{{
             element[column] | date : "shortDate"
           }}</span>
