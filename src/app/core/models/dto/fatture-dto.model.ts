@@ -1,12 +1,12 @@
-import { ProdottoDto, ProdottoRequest } from './prodotto-dto.model';
+import { ProdottoDto, ProdottoServer } from './prodotto-dto.model';
 
-export interface FattureRequest {
+export interface FattureServer {
   id?: number;
   numeroFattura: string;
   importo?: number;
   iva: number;
   scadenza: string;
-  prodotti?: ProdottoRequest[];
+  prodotti?: ProdottoServer[];
   cliente: number;
 }
 

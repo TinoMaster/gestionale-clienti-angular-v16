@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import ClientiDTO from 'src/app/core/models/dto/clienti-dto.model';
+import { ClientiServer } from 'src/app/core/models/dto/clienti-dto.model';
 import { FattureDto } from 'src/app/core/models/dto/fatture-dto.model';
 import { ClientiService } from 'src/app/core/services/clienti.service';
 import { FattureService } from 'src/app/core/services/fatture.service';
@@ -18,7 +18,7 @@ export class FattureNuovaComponent implements OnInit {
     private router: Router
   ) {}
 
-  clientiList!: ClientiDTO[];
+  clientiList!: ClientiServer[];
   formNuovaFattura!: FormGroup;
 
   ngOnInit(): void {

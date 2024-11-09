@@ -30,6 +30,8 @@ import { FatturaDetailComponent } from './pages/fatture/fattura-detail/fattura-d
 import { FattureModificaComponent } from './pages/fatture/fatture-modifica/fatture-modifica.component';
 import { FattureNuovaComponent } from './pages/fatture/fatture-nuova/fatture-nuova.component';
 import { BoxDetailComponent } from './shared/components/box-detail/box-detail.component';
+import { TableComponent } from './shared/components/table/table.component';
+import { OptionForPrincipalTableComponent } from './shared/components/option-for-principal-table/option-for-principal-table.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { BoxDetailComponent } from './shared/components/box-detail/box-detail.co
     FattureModificaComponent,
     FattureNuovaComponent,
     BoxDetailComponent,
+    TableComponent,
+    OptionForPrincipalTableComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import ClientiDTO from 'src/app/core/models/dto/clienti-dto.model';
+import { ClientiServer } from 'src/app/core/models/dto/clienti-dto.model';
 import { ClientiService } from 'src/app/core/services/clienti.service';
 
 @Component({
@@ -24,7 +24,7 @@ export class ClientiNuovoComponent implements OnInit {
 
   saveCliente() {
     console.log(this.formNuovoCliente);
-    const clienteToSave: ClientiDTO = {
+    const clienteToSave: ClientiServer = {
       nome: this.formNuovoCliente.get('nome')?.value,
       cognome: this.formNuovoCliente.get('cognome')?.value,
       email: this.formNuovoCliente.get('email')?.value,

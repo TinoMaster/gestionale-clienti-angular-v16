@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import ClientiDTO from 'src/app/core/models/dto/clienti-dto.model';
+import { ClientiServer } from 'src/app/core/models/dto/clienti-dto.model';
 import { FattureDto } from 'src/app/core/models/dto/fatture-dto.model';
 import { ProdottoDto } from 'src/app/core/models/dto/prodotto-dto.model';
 import { ClientiService } from 'src/app/core/services/clienti.service';
@@ -19,7 +19,7 @@ export class FatturaDetailComponent {
     scadenza: '',
     numeroFattura: '',
   };
-  cliente!: ClientiDTO;
+  cliente!: ClientiServer;
   imponibileGenerale: number = 0;
   totaleGenerale: number = 0;
 

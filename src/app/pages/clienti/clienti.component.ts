@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import ClientiDTO from 'src/app/core/models/dto/clienti-dto.model';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ClientiDto } from 'src/app/core/models/dto/clienti-dto.model';
 import { ClientiService } from 'src/app/core/services/clienti.service';
 
 @Component({
@@ -7,11 +8,22 @@ import { ClientiService } from 'src/app/core/services/clienti.service';
   templateUrl: './clienti.component.html',
   styleUrls: ['./clienti.component.css'],
 })
-export class ClientiComponent {
-  clientiList!: ClientiDTO[];
-  filteredList!: ClientiDTO[];
+export class ClientiComponent implements OnInit {
+  clientiList!: ClientiDto[];
+  filteredList!: ClientiDto[];
+  titleTable!: string;
 
-  constructor(private clientiService: ClientiService) {
+  displayedColumns: string[] = [
+    'nome',
+    'cognome',
+    'email',
+    'qtaFatture',
+    'azioni',
+  ];
+
+  constructor(private clientiService: ClientiService, private router: Router) {}
+
+  ngOnInit(): void {
     this.clientiService.getAllClients().subscribe((clienti) => {
       this.clientiList = clienti;
       this.filteredList = clienti;
@@ -35,7 +47,15 @@ export class ClientiComponent {
     }
   }
 
-  deleteClient(id: number) {
+  onViewClient = (id: number) => {
+    this.router.navigate(['/clienti/', id]);
+  };
+
+  onEditClient = (id: number) => {
+    this.router.navigate(['/clienti', 'modifica', id]);
+  };
+
+  onDeleteClient = (id: number) => {
     this.clientiService.deleteClient(id).subscribe((response) => {
       if (response) {
         this.filteredList = this.filteredList.filter(
@@ -43,5 +63,5 @@ export class ClientiComponent {
         );
       }
     });
-  }
+  };
 }

@@ -1,4 +1,4 @@
-export interface ProdottoRequest {
+export interface ProdottoServer {
   id?: number;
   name: string;
   price: number;

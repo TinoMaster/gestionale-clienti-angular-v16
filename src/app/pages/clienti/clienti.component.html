@@ -1,99 +1,11 @@
-<div
-  class="d-flex flex-wrap-reverse align-items-center justify-content-lg-start gap-3"
->
-  <!-- Botón de Nuevo Cliente -->
-  <button routerLink="/clienti/nuovo" class="btn my-btn-primary bg-gradient gap-1">
-    <mat-icon
-      aria-hidden="false"
-      aria-label="Icona di ricerca"
-      fontIcon="group_add"
-    ></mat-icon>
-    <span class="">Aggiungi nuovo cliente</span>
-  </button>
-  <!-- Botón de Filtro -->
-  <button mat-raised-button class="my-btn-border-primary bg-transparent">
-    <mat-icon
-      class="my-text-primary"
-      aria-hidden="false"
-      aria-label="Icona di ricerca"
-      fontIcon="filter_list"
-    ></mat-icon>
-    <span class="my-text-primary">Filter</span>
-  </button>
-  <!-- Barra de búsqueda -->
-  <div class="flex-grow-1 flex-md-grow-0">
-    <div class="w-100 w-md-40 d-flex gap-2 align-items-center">
-      <input
-        type="search"
-        placeholder="Cercare..."
-        class="form-control border-end-0 rounded-start py-2"
-        (keyup.enter)="filtered(filter.value)"
-        #filter
-      />
-      <button
-        class="rounded my-btn-primary bg-gradient"
-        mat-mini-fab
-        (click)="filtered(filter.value)"
-      >
-        <mat-icon
-          aria-hidden="false"
-          aria-label="Icona di ricerca"
-          fontIcon="search"
-          class="text-white cursor-pointer"
-        ></mat-icon>
-      </button>
-    </div>
-  </div>
-</div>
+<app-option-for-principal-table
+  [filterFunction]="filtered"
+></app-option-for-principal-table>
 
-<div class="table-responsive mt-2 mt-lg-3 shadow">
-  <table class="table table-hover">
-    <thead class="table-light">
-      <tr>
-        <th class="my-bg-dark bg-gradient text-white w-25 rounded-start-1">
-          Nome
-        </th>
-        <th class="my-bg-dark bg-gradient text-white w-25">Cognome</th>
-        <th class="my-bg-dark bg-gradient text-white">Email</th>
-        <th class="my-bg-dark bg-gradient text-white">Q.ta fatture</th>
-        <th class="my-bg-dark bg-gradient text-white rounded-end-1">
-          Dettagli
-        </th>
-      </tr>
-    </thead>
-
-    <tbody *ngIf="filteredList?.length === 0">
-      <tr>
-        <td colspan="7" class="text-center">Nessun risultato trovato</td>
-      </tr>
-    </tbody>
-
-    <tbody *ngFor="let cliente of filteredList; index as i">
-      <tr class="" [class]="i % 2 === 0 ? 'table-secondary' : ''">
-        <td class="border-bottom-0">{{ cliente.nome }}</td>
-        <td class="border-bottom-0">{{ cliente.cognome }}</td>
-        <td class="border-bottom-0">{{ cliente.email }}</td>
-        <td class="border-bottom-0">{{ cliente.fatture?.length }}</td>
-        <td class="border-bottom-0">
-          <div class="d-flex gap-2">
-            <mat-icon
-              class="icons-links text-success"
-              [routerLink]="['/clienti', cliente.id]"
-              >account_box</mat-icon
-            >
-            <mat-icon
-              class="icons-links text-warning"
-              [routerLink]="['/clienti', 'modifica', cliente.id]"
-              >edit</mat-icon
-            >
-            <mat-icon
-              class="icons-links text-danger"
-              (click)="deleteClient(cliente.id ?? 0)"
-              >delete</mat-icon
-            >
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<app-table
+  [displayedColumns]="displayedColumns"
+  [dataSource]="filteredList"
+  [onView]="onViewClient"
+  [onEdit]="onEditClient"
+  [onDelete]="onDeleteClient"
+></app-table>

@@ -1,0 +1,49 @@
+<div
+  class="d-flex flex-wrap-reverse align-items-center justify-content-lg-start gap-3"
+>
+  <!-- Botón de Nuevo Cliente -->
+  <button
+    routerLink="/clienti/nuovo"
+    class="btn my-btn-primary bg-gradient gap-1"
+  >
+    <mat-icon
+      aria-hidden="false"
+      aria-label="Icona di ricerca"
+      fontIcon="group_add"
+    ></mat-icon>
+    <span class="">Aggiungi nuovo cliente</span>
+  </button>
+  <!-- Botón de Filtro -->
+  <button class="btn my-btn-border-primary gap-1">
+    <mat-icon
+      class="my-text-primary"
+      aria-hidden="false"
+      aria-label="Icona di ricerca"
+      fontIcon="filter_list"
+    ></mat-icon>
+    <span class="my-text-primary">Filter</span>
+  </button>
+  <!-- Barra de búsqueda -->
+  <div class="flex-grow-1 flex-md-grow-0">
+    <div class="w-100 w-md-40 d-flex gap-2 align-items-center">
+      <input
+        type="search"
+        placeholder="Cercare..."
+        class="form-control border-3 border-white shadow-sm rounded-start py-2"
+        (keyup.enter)="filterFunction(filter.value)"
+        #filter
+      />
+      <button
+        class="rounded my-btn-primary bg-gradient"
+        (click)="filterFunction(filter.value)"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Icona di ricerca"
+          fontIcon="search"
+          class="text-white cursor-pointer"
+        ></mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { FattureDto, FattureRequest } from '../models/dto/fatture-dto.model';
+import { FattureDto, FattureServer } from '../models/dto/fatture-dto.model';
 import { FormFilter } from '../models/common/global.types';
-import { ProdottoDto, ProdottoRequest } from '../models/dto/prodotto-dto.model';
+import { ProdottoDto, ProdottoServer } from '../models/dto/prodotto-dto.model';
 import { mapFatturaToDto } from '../mappers/fattura.mapper';
 
 @Injectable({
@@ -18,14 +18,14 @@ export class FattureService {
     const params = this.buildFilterParams(filters);
 
     return this.httpClient
-      .get<FattureRequest[]>(this.url, { params })
-      .pipe(map((fatture: FattureRequest[]) => fatture.map(mapFatturaToDto)));
+      .get<FattureServer[]>(this.url, { params })
+      .pipe(map((fatture: FattureServer[]) => fatture.map(mapFatturaToDto)));
   }
 
   getFatturaById(id: number): Observable<FattureDto> {
     return this.httpClient
-      .get<FattureRequest>(`${this.url}/${id}`)
-      .pipe(map((fattura: FattureRequest) => mapFatturaToDto(fattura)));
+      .get<FattureServer>(`${this.url}/${id}`)
+      .pipe(map((fattura: FattureServer) => mapFatturaToDto(fattura)));
   }
 
   saveFattura(fatturaToSave: FattureDto): Observable<FattureDto> {

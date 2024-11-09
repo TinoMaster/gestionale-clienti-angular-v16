@@ -17,4 +17,7 @@ export class BoxDetailComponent {
   @Input({ required: false }) imponibile: number = 0;
   @Input({ required: false }) iva: number = 0;
   @Input({ required: true }) totale: number = 0;
+  @Input({ required: false }) onView = (id: number) => {};
+  @Input({ required: false }) onEdit = (id: number) => {};
+  @Input({ required: false }) onDelete = (id: number) => {};
 }

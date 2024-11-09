@@ -9,9 +9,9 @@
         <ul class="navbar-nav">
           <li *ngFor="let link of navLinks" class="nav-item">
             <a
-              class="nav-link active"
+              class="nav-link active rounded-1"
               aria-current="page"
-              routerLinkActive="bg-white bg-opacity-10 bg-gradient rounded-1"
+              routerLinkActive="bg-white text-dark bg-gradient "
               [routerLink]="link.route"
               >{{ link.name }}</a
             >

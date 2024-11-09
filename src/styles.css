@@ -10,17 +10,6 @@
   --bs-green: #198754;
   --bs-teal: #20c997;
   --bs-cyan: hwb(190 6% 15%);
-  --bs-black: #000;
-  --bs-white: #fff;
-  --bs-gray: #6c757d;
-  --bs-primary: #0d6efd;
-  --bs-secondary: #6c757d;
-  --bs-success: #198754;
-  --bs-info: #0dcaf0;
-  --bs-warning: #ffc107;
-  --bs-danger: #dc3545;
-  --bs-light: #f8f9fa;
-  --bs-dark: #212926;
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -59,11 +48,11 @@ body {
 }
 
 :root .my-bg-primary {
-  background-color: rgb(14, 100, 117);
+  background-color: rgb(111, 66, 193);
 }
 
 :root .my-text-primary {
-  color: rgb(14, 100, 117);
+  color: rgb(111, 66, 193);
 }
 
 :root .my-bg-secondary {
@@ -78,31 +67,39 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 5px rgba(13, 109, 253, 0.247);
-  background-color: rgb(14, 100, 117);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: rgb(111, 66, 193);
   color: white;
   border: none;
+  padding: 10px 20px;
 }
 
 :root .my-btn-primary:hover {
-  background-color: rgb(13, 86, 100);
+  background-color: rgb(91, 54, 160);
   color: white;
   box-shadow: none;
 }
 
 :root .my-btn-border-primary {
-  border: 1px solid rgb(14, 100, 117);
-  color: rgb(14, 100, 117);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 1px solid rgb(111, 66, 193);
+  border: none;
+  color: rgb(111, 66, 193);
   box-shadow: none;
+  background-color: transparent;
+  padding: 10px 20px;
 }
 
 :root .my-btn-border-primary:hover {
-  background-color: rgb(14, 100, 117);
+  outline: 1px solid rgb(91, 54, 160);
+  background-color: rgba(91, 54, 160, 0.1);
   box-shadow: none;
 }
 
 :root .my-text-primary {
-  color: rgb(14, 100, 117);
+  color: rgb(91, 54, 160);
 }
 
 :root .my-bg-orange {

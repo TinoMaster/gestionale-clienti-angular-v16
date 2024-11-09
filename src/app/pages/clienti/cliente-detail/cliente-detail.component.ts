@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import ClientiDTO from 'src/app/core/models/dto/clienti-dto.model';
+import { ClientiDto } from 'src/app/core/models/dto/clienti-dto.model';
 import { ClientiService } from 'src/app/core/services/clienti.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class ClienteDetailComponent implements OnInit {
   ) {}
 
   idClient!: string;
-  cliente!: ClientiDTO;
+  cliente!: ClientiDto;
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {

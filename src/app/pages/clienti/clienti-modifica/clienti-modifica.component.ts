@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import ClientiDTO from 'src/app/core/models/dto/clienti-dto.model';
+import { ClientiServer } from 'src/app/core/models/dto/clienti-dto.model';
 import { ClientiService } from 'src/app/core/services/clienti.service';
 
 @Component({
@@ -40,7 +40,7 @@ export class ClientiModificaComponent implements OnInit {
   }
 
   updateCliente() {
-    const clienteToUpdate: ClientiDTO = {
+    const clienteToUpdate: ClientiServer = {
       nome: this.formModificaCliente.get('nome')?.value,
       cognome: this.formModificaCliente.get('cognome')?.value,
       email: this.formModificaCliente.get('email')?.value,
