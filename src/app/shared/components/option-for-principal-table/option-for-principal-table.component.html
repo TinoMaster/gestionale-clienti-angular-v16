@@ -3,18 +3,18 @@
 >
   <!-- Botón de Nuevo Cliente -->
   <button
-    routerLink="/clienti/nuovo"
+    [routerLink]="btnAdd.route"
     class="btn my-btn-primary bg-gradient gap-1"
   >
     <mat-icon
       aria-hidden="false"
       aria-label="Icona di ricerca"
-      fontIcon="group_add"
+      [fontIcon]="btnAdd.icon || 'add'"
     ></mat-icon>
-    <span class="">Aggiungi nuovo cliente</span>
+    <span class="">{{ btnAdd.label }}</span>
   </button>
   <!-- Botón de Filtro -->
-  <button class="btn my-btn-border-primary gap-1">
+  <button (click)="toggle()" class="btn my-btn-border-primary gap-1">
     <mat-icon
       class="my-text-primary"
       aria-hidden="false"
@@ -46,4 +46,8 @@
       </button>
     </div>
   </div>
+</div>
+
+<div *ngIf="viewFilters" class="my-3">
+  <ng-content select=".filters"></ng-content>
 </div>

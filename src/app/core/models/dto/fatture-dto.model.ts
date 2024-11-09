@@ -17,5 +17,6 @@ export interface FattureDto {
   iva: number;
   scadenza: string;
   prodotti?: ProdottoDto[];
+  qtaProdotti?: number;
   cliente: number;
 }

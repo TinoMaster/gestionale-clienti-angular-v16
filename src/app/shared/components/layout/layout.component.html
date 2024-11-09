@@ -2,26 +2,29 @@
   <mat-drawer class="p-1 bg-dark" #drawer mode="over" opened="false">
     <app-sidebar></app-sidebar>
   </mat-drawer>
-  <section class="root-section">
-    <div class="d-flex flex-column h-100 gap-4">
-      <div class="position-sticky top-0 w-100 z-1">
-        <app-header>
-          <button
-            class="btn-toggle-sidebar"
-            mat-icon-button
-            (click)="drawer.toggle()"
-          >
-            <mat-icon class="text-white text-opacity-75">menu</mat-icon>
-          </button>
-        </app-header>
+  <section class="main-sectiond-flex flex-column">
+    <div class="menu-section position-sticky top-0 w-100 z-1">
+      <app-header>
+        <button
+          class="btn-toggle-sidebar"
+          mat-icon-button
+          (click)="drawer.toggle()"
+        >
+          <mat-icon class="text-white text-opacity-75">menu</mat-icon>
+        </button>
+      </app-header>
+    </div>
+
+    <div class="content-section">
+      <div>
+        <div class="container pb-3">
+          <app-nav-router-links></app-nav-router-links>
+        </div>
+        <div class="container">
+          <ng-content></ng-content>
+        </div>
       </div>
 
-      <div class="px-3 px-lg-5 container">
-        <app-nav-router-links></app-nav-router-links>
-      </div>
-      <div class="flex-grow-1 px-lg-5 container main-section">
-        <ng-content></ng-content>
-      </div>
       <div class="">
         <app-footer></app-footer>
       </div>

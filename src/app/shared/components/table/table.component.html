@@ -30,11 +30,32 @@
         [class]="i % 2 === 0 ? 'bg-light' : 'bg-white'"
         class="border-0 w-50"
       >
-        {{ element[column] }}
+        <ng-container [ngSwitch]="column">
+          <span *ngSwitchCase="'importo'">{{
+            element[column] | currency
+          }}</span>
+          <span *ngSwitchCase="'scadenza'">{{
+            element[column] | date : "shortDate"
+          }}</span>
+          <!-- Campo sin formateo -->
+          <span *ngSwitchDefault>{{ element[column] }}</span>
+        </ng-container>
         <div *ngIf="column === 'azioni'" class="d-flex gap-2">
-          <mat-icon class="icons-links text-success" (click)="onView(element.id)">account_box</mat-icon>
-          <mat-icon class="icons-links text-warning" (click)="onEdit(element.id)">edit</mat-icon>
-          <mat-icon class="icons-links text-danger" (click)="onDelete(element.id)">delete</mat-icon>
+          <mat-icon
+            class="icons-links text-success"
+            (click)="onView(element.id)"
+            >account_box</mat-icon
+          >
+          <mat-icon
+            class="icons-links text-warning"
+            (click)="onEdit(element.id)"
+            >edit</mat-icon
+          >
+          <mat-icon
+            class="icons-links text-danger"
+            (click)="onDelete(element.id)"
+            >delete</mat-icon
+          >
         </div>
       </td>
     </ng-container>

@@ -1,9 +1,20 @@
-.root-section{
+.main-section {
   min-height: 100vh;
 }
 
-.main-section{
-  min-height: 75vh;
+.content-section {
+  min-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 2rem;
+}
+
+.menu-section {
+  height: 4rem;
 }
 
 .layout-container {
@@ -11,12 +22,12 @@
   height: 100vh;
 }
 
-.btn-toggle-sidebar{
+.btn-toggle-sidebar {
   display: none;
 }
 
 @media (max-width: 768px) {
-  .btn-toggle-sidebar{
+  .btn-toggle-sidebar {
     display: block;
   }
 }

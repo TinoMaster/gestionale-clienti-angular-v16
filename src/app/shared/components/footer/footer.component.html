@@ -1,17 +1,9 @@
 <footer class="p-3 text-center text-md-start my-bg-dark bg-gradient">
-  <div
-    class="container d-flex flex-wrap align-items-center justify-content-center gap-3 px-2"
-  >
-    <span class="text-muted text-white-50">
-      © 2023, Created by Software Industriale.
-    </span>
-  </div>
-
   <div class="d-grid gap-6 d-md-flex justify-content-md-around text-white-50">
     <!-- División de Páginas -->
     <div class="">
-      <h5 class="bold">Páginas</h5>
-      <ul class="list-unstyled">
+      <h5 class="bold my-1">Pagine</h5>
+      <ul class="list-unstyled d-flex flex-wrap gap-3 justify-content-center">
         <li *ngFor="let page of pageLinks">
           <a [routerLink]="page.route" class="text-decoration-none">{{
             page.name
@@ -22,7 +14,7 @@
 
     <!-- División de Descripción -->
     <div class="">
-      <h5 class="bold">Descripción</h5>
+      <h5 class="bold my-1">Descrizione</h5>
       <p class="mb-0">
         {{ description }}
       </p>
@@ -30,7 +22,7 @@
 
     <!-- División de Contactos -->
     <div class="">
-      <h5 class="bold">Social</h5>
+      <h5 class="bold my-1">Social</h5>
       <ul class="d-flex flex-wrap list-unstyled">
         <li class="d-flex gap-2 justify-content-center w-100">
           <a
@@ -42,21 +34,31 @@
           </a>
         </li>
       </ul>
-      <h5 class="bold">Contatti</h5>
+    </div>
+
+    <div>
+      <h5 class="bold my-1">Contatti</h5>
       <ul class="d-flex flex-wrap list-unstyled gap-3">
         <li class="d-flex gap-2 justify-content-center w-100">
           <a
             class="text-decoration-none d-flex align-items-center"
             href="mailto:{{ email }}"
-            ><mat-icon class="icon-link">mail</mat-icon>: {{ email }}</a
+            ><mat-icon class="icon-link">mail</mat-icon> {{ email }}</a
           >
           <a
             class="text-decoration-none d-flex align-items-center"
             href="tel:{{ phone }}"
-            ><mat-icon class="icon-link">call</mat-icon>: {{ phone }}</a
+            ><mat-icon class="icon-link">call</mat-icon> {{ phone }}</a
           >
         </li>
       </ul>
     </div>
+  </div>
+  <div
+    class="container d-flex flex-wrap align-items-center justify-content-center gap-3 px-2"
+  >
+    <span class="text-muted text-light-emphasis">
+      © 2023, Created by Software Industriale.
+    </span>
   </div>
 </footer>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormFilter } from 'src/app/core/models/common/global.types';
 import { FattureDto } from 'src/app/core/models/dto/fatture-dto.model';
 import { FattureService } from 'src/app/core/services/fatture.service';
@@ -11,7 +12,6 @@ import { FattureService } from 'src/app/core/services/fatture.service';
 export class FattureComponent {
   fattureList!: FattureDto[];
   filteredFattureList!: FattureDto[];
-  viewFilter: boolean = false;
 
   formFilter: FormFilter = {
     scadute: false,
@@ -19,7 +19,16 @@ export class FattureComponent {
     maxImporto: 0,
   };
 
-  constructor(private fattureService: FattureService) {
+  displayedColumns: string[] = [
+    'numeroFattura',
+    'importo',
+    'iva',
+    'scadenza',
+    'qtaProdotti',
+    'azioni',
+  ];
+
+  constructor(private fattureService: FattureService, private router: Router) {
     this.fattureService.getAllFatture().subscribe((fatture) => {
       this.fattureList = fatture;
       this.filteredFattureList = fatture;
@@ -27,18 +36,23 @@ export class FattureComponent {
   }
 
   toggleFilter() {
-    this.viewFilter = !this.viewFilter;
     this.filteredFattureList = this.fattureList;
-    if (this.viewFilter) {
-      this.formFilter = {
-        scadute: false,
-        minImporto: 0,
-        maxImporto: 0,
-      };
-    }
+    this.formFilter = {
+      scadute: false,
+      minImporto: 0,
+      maxImporto: 0,
+    };
   }
 
-  deleteFattura(id: number) {
+  onViewFattura(id: number) {
+    this.router.navigate(['/fatture/', id]);
+  }
+
+  onEditFattura(id: number) {
+    this.router.navigate(['/fatture', 'modifica', id]);
+  }
+
+  onDeleteFattura(id: number) {
     this.fattureService.deleteFattura(id).subscribe((response) => {
       if (response) {
         this.filteredFattureList = this.filteredFattureList.filter(

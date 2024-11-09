@@ -27,7 +27,7 @@ export const authLinks: NavLinks[] = [
 ];
 
 export const footerDescription =
-  'Benvenuto in Gestionale Clienti, un sistema di gestione di clienti e fatture, se vuoi aiutarti, contattaci qui.';
+  'Benvenuto in Gestionale Clienti, un sistema di gestione di clienti e fatture.';
 
 export const socialContacts: SocialMediaLinks[] = [
   {

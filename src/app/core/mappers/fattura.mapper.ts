@@ -5,5 +5,6 @@ export function mapFatturaToDto(fattura: FattureServer): FattureDto {
   return {
     ...fattura,
     prodotti: fattura.prodotti?.map(mapProdottoToDto),
+    qtaProdotti: fattura.prodotti?.length ?? 0,
   };
 }
