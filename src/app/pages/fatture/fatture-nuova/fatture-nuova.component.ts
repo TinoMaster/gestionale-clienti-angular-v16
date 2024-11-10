@@ -1,7 +1,8 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ClientiServer } from 'src/app/core/models/dto/clienti-dto.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ClientiDto } from 'src/app/core/models/dto/clienti-dto.model';
 import { FattureDto } from 'src/app/core/models/dto/fatture-dto.model';
 import { ClientiService } from 'src/app/core/services/clienti.service';
 import { FattureService } from 'src/app/core/services/fatture.service';
@@ -15,22 +16,30 @@ export class FattureNuovaComponent implements OnInit {
   constructor(
     private clientiService: ClientiService,
     private fattureService: FattureService,
-    private router: Router
+    private router: Router,
+    private location: Location,
+    private activatedRoute: ActivatedRoute
   ) {}
 
-  clientiList!: ClientiServer[];
+  clientiList!: ClientiDto[];
   formNuovaFattura!: FormGroup;
+  idCliente!: number | null;
 
   ngOnInit(): void {
     this.clientiService.getAllClients().subscribe((clienti) => {
       this.clientiList = clienti;
     });
 
+    this.activatedRoute.queryParams.subscribe((params) => {
+      const idClienteStr: string = params['id_cliente'];
+      this.idCliente = idClienteStr ? parseInt(idClienteStr) : null;
+    });
+
     this.formNuovaFattura = new FormGroup({
       numeroFattura: new FormControl('', Validators.required),
       iva: new FormControl('', Validators.required),
       scadenza: new FormControl('', Validators.required),
-      cliente: new FormControl('', Validators.required),
+      cliente: new FormControl(this.idCliente ?? '', Validators.required),
     });
   }
 
@@ -45,7 +54,11 @@ export class FattureNuovaComponent implements OnInit {
 
     this.fattureService.saveFattura(fatturaToSave).subscribe(() => {
       if (fatturaToSave) {
-        this.router.navigate(['/fatture']);
+        if (window.history.length > 1) {
+          this.location.back();
+        } else {
+          this.router.navigate(['/fatture']);
+        }
       }
     });
   }

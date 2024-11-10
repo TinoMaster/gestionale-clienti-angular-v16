@@ -5,6 +5,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { FattureNuovaComponent } from './pages/fatture/fatture-nuova/fatture-nuo
 import { BoxDetailComponent } from './shared/components/box-detail/box-detail.component';
 import { TableComponent } from './shared/components/table/table.component';
 import { OptionForPrincipalTableComponent } from './shared/components/option-for-principal-table/option-for-principal-table.component';
+import { ConfirmDialogComponent } from './shared/components/dialogs/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { OptionForPrincipalTableComponent } from './shared/components/option-for
     BoxDetailComponent,
     TableComponent,
     OptionForPrincipalTableComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { OptionForPrincipalTableComponent } from './shared/components/option-for
     MatButtonModule,
     MatInputModule,
     MatTableModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

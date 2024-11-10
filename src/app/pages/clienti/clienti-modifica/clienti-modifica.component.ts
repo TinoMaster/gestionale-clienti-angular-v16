@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,7 +14,8 @@ export class ClientiModificaComponent implements OnInit {
   constructor(
     private clientiService: ClientiService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private location: Location
   ) {}
 
   idClient!: string;
@@ -50,7 +52,11 @@ export class ClientiModificaComponent implements OnInit {
       .updateClient(parseInt(this.idClient), clienteToUpdate)
       .subscribe((response) => {
         if (response) {
-          this.router.navigate(['/clienti']);
+          if (window.history.length > 1) {
+            this.location.back();
+          } else {
+            this.router.navigate(['/clienti']);
+          }
         }
       });
   }

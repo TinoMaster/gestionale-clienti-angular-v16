@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { DialogToConfirmData } from 'src/app/core/models/common/global.types';
 import { ClientiDto } from 'src/app/core/models/dto/clienti-dto.model';
 import { ClientiService } from 'src/app/core/services/clienti.service';
+import { ConfirmDialogComponent } from 'src/app/shared/components/dialogs/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-clienti',
@@ -21,7 +24,11 @@ export class ClientiComponent implements OnInit {
     'azioni',
   ];
 
-  constructor(private clientiService: ClientiService, private router: Router) {}
+  constructor(
+    private clientiService: ClientiService,
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.clientiService.getAllClients().subscribe((clienti) => {
@@ -61,6 +68,21 @@ export class ClientiComponent implements OnInit {
         this.filteredList = this.filteredList.filter(
           (clienti) => clienti.id !== id
         );
+      }
+    });
+  };
+
+  openDialogDeleteClient = (id: number): void => {
+    const data: DialogToConfirmData = {
+      message: `Sei sicuro di voler cancellare il cliente?`,
+      content:
+        'Questa azione non si puo annullare, neanche la cancellazione di tutte le sue fatture',
+    };
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, { data });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.onDeleteClient(id);
       }
     });
   };

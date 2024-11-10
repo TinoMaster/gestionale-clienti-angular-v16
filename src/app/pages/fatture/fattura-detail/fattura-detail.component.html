@@ -2,19 +2,19 @@
   [dataSource]="fattura.prodotti || []"
   title="Dettagli Fattura"
   tableTitle="Prodotti"
-  [modifyRoute]="'/fatture/modifica/' + fattura.id"
+  [editFunction]="editFattura"
   [deleteFunction]="deleteFattura"
   [displayedColumns]="displayedColumns"
   [imponibile]="imponibileGenerale"
   [iva]="fattura.iva"
   [totale]="totaleGenerale"
-  addButtonRoute="/fatture/prodotti/nuovo"
+  [addFunction]="addProdotto"
   [addButtonLabel]="'Aggiungi Prodotto'"
 >
   <div class="details">
     <p><strong>Numero Fattura:</strong> {{ fattura.numeroFattura }}</p>
     <p><strong>Importo:</strong> {{ fattura.importo | currency }}</p>
-    <p><strong>IVA:</strong> {{ fattura.iva }} %</p>
+    <p><strong>IVA:</strong> {{ fattura.iva | percent}}</p>
     <p><strong>Scadenza:</strong> {{ fattura.scadenza | date }}</p>
     <p class="d-flex gap-1">
       <strong>Cliente:</strong>

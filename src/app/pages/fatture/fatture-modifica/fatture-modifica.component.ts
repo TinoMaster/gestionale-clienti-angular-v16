@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClientiServer } from 'src/app/core/models/dto/clienti-dto.model';
+import { ClientiDto } from 'src/app/core/models/dto/clienti-dto.model';
 import { FattureDto } from 'src/app/core/models/dto/fatture-dto.model';
 import { ClientiService } from 'src/app/core/services/clienti.service';
 import { FattureService } from 'src/app/core/services/fatture.service';
@@ -20,7 +20,8 @@ export class FattureModificaComponent implements OnInit {
   ) {}
 
   idFattura!: number;
-  clientiList!: ClientiServer[];
+  fattura!: FattureDto;
+  clientiList!: ClientiDto[];
   formModificaFattura!: FormGroup;
 
   ngOnInit(): void {
@@ -40,6 +41,7 @@ export class FattureModificaComponent implements OnInit {
     });
 
     this.fattureService.getFatturaById(this.idFattura).subscribe((fattura) => {
+      this.fattura = fattura;
       this.formModificaFattura.controls['numeroFattura'].setValue(
         fattura.numeroFattura
       );
@@ -54,6 +56,7 @@ export class FattureModificaComponent implements OnInit {
 
   updateFattura() {
     const fatturaToUpdate: FattureDto = {
+      ...this.fattura,
       numeroFattura: this.formModificaFattura.value['numeroFattura'],
       iva: this.formModificaFattura.value['iva'],
       scadenza: this.formModificaFattura.value['scadenza'],

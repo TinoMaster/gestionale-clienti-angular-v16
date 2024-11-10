@@ -5,8 +5,8 @@
     <span class="h4 fw-bold my-auto">{{ title }}</span>
 
     <div>
-      <a [routerLink]="modifyRoute" class="btn btn-warning btn-sm me-2"
-        >Modifica</a
+      <button (click)="editFunction()" class="btn btn-warning btn-sm me-2"
+        >Modifica</button
       >
       <button (click)="deleteFunction()" class="btn btn-danger btn-sm">
         Elimina
@@ -28,16 +28,16 @@
   ></app-table>
 
   <div class="d-flex justify-content-end mt-2">
-    <a [routerLink]="addButtonRoute" class="btn my-btn-primary bg-gradient">{{
+    <button (click)="addFunction()" class="btn my-btn-primary bg-gradient">{{
       addButtonLabel
-    }}</a>
+    }}</button>
   </div>
 
   <div
     class="d-flex flex-wrap justify-content-end align-items-center gap-3 mt-4 p-3 bg-light border rounded"
   >
-    <span><strong>IMPONIBILE:</strong> {{ imponibile | currency }}</span>
-    <span><strong>IVA:</strong> {{ iva }} %</span>
+    <span *ngIf="imponibile"><strong>IMPONIBILE:</strong> {{ imponibile | currency }}</span>
+    <span *ngIf="iva"><strong>IVA:</strong> {{ iva | percent }}</span>
     <span class="text-success"
       ><strong>TOTALE: {{ totale | currency }}</strong>
     </span>

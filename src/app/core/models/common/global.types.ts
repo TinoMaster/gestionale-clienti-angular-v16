@@ -14,3 +14,8 @@ export interface SocialMediaLinks {
   link: string;
   iconName: string;
 }
+
+export interface DialogToConfirmData {
+  message: string;
+  content: string;
+}

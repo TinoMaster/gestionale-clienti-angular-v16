@@ -1,7 +1,7 @@
 <div class="table-responsive">
   <h2 *ngIf="tableTitle" class="h5 p-1">{{ tableTitle }}</h2>
   <table
-    *ngIf="dataSource; else noProducts"
+    *ngIf="dataSource"
     mat-table
     [dataSource]="dataSource"
     class="mat-elevation-z8"
@@ -34,12 +34,9 @@
           <span *ngSwitchCase="'importo'">{{
             element[column] | currency
           }}</span>
-          <span *ngSwitchCase="'totale'">{{
-            element[column] | currency
-          }}</span>
-          <span *ngSwitchCase="'prezzo'">{{
-            element[column] | currency
-          }}</span>
+          <span *ngSwitchCase="'totale'">{{ element[column] | currency }}</span>
+          <span *ngSwitchCase="'prezzo'">{{ element[column] | currency }}</span>
+          <span *ngSwitchCase="'iva'">{{ element[column] | percent }}</span>
           <span *ngSwitchCase="'scadenza'">{{
             element[column] | date : "shortDate"
           }}</span>
@@ -50,7 +47,7 @@
           <mat-icon
             class="icons-links text-success"
             (click)="onView(element.id)"
-            >account_box</mat-icon
+            >info</mat-icon
           >
           <mat-icon
             class="icons-links text-warning"
@@ -69,7 +66,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-  <ng-template #noProducts>
-    <p class="text-muted">Non ci sono elementi da mostrare</p>
-  </ng-template>
+  <p *ngIf="dataSource?.length === 0" class="text-muted text-center">
+    Non ci sono elementi da mostrare
+  </p>
 </div>

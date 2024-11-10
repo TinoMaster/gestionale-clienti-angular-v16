@@ -1,10 +1,10 @@
-import { FattureDto } from './fatture-dto.model';
+import { FattureDto, FattureServer } from './fatture-dto.model';
 export interface ClientiServer {
   id?: number;
   nome: string;
   cognome: string;
   email: string;
-  fatture?: FattureDto[];
+  fatture?: FattureServer[];
 }
 
 export interface ClientiDto {
@@ -14,4 +14,5 @@ export interface ClientiDto {
   email: string;
   fatture?: FattureDto[];
   qtaFatture?: number;
+  totaleFatture?: number;
 }

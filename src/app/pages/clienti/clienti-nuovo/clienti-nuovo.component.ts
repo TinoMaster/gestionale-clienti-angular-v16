@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,7 +11,11 @@ import { ClientiService } from 'src/app/core/services/clienti.service';
   styleUrls: ['./clienti-nuovo.component.css'],
 })
 export class ClientiNuovoComponent implements OnInit {
-  constructor(private clientiService: ClientiService, private router: Router) {}
+  constructor(
+    private clientiService: ClientiService,
+    private router: Router,
+    private location: Location
+  ) {}
 
   formNuovoCliente!: FormGroup;
 
@@ -32,7 +37,11 @@ export class ClientiNuovoComponent implements OnInit {
 
     this.clientiService.saveClient(clienteToSave).subscribe((response) => {
       if (response) {
-        this.router.navigate(['/clienti']);
+        if (window.history.length > 1) {
+          this.location.back();
+        } else {
+          this.router.navigate(['/clienti']);
+        }
       }
     });
   }

@@ -3,7 +3,7 @@ import { ProdottoDto, ProdottoServer } from './prodotto-dto.model';
 export interface FattureServer {
   id?: number;
   numeroFattura: string;
-  importo?: number;
+  importo: number;
   iva: number;
   scadenza: string;
   prodotti?: ProdottoServer[];
@@ -13,7 +13,7 @@ export interface FattureServer {
 export interface FattureDto {
   id?: number;
   numeroFattura: string;
-  importo?: number;
+  importo: number;
   iva: number;
   scadenza: string;
   prodotti?: ProdottoDto[];
