@@ -1,0 +1,29 @@
+<app-container-skeleton
+  *ngIf="isLoadingProdotto"
+  [rowCount]="12"
+></app-container-skeleton>
+
+<div *ngIf="!isLoadingProdotto">
+  <app-box-detail
+    title="Dettagli Prodotto"
+    [editFunction]="editProdotto"
+    [deleteFunction]="openDialogDeleteProdotto"
+    [totale]="totale"
+    [imponibile]="imponibile"
+    [iva]="iva"
+  >
+    <div class="details">
+      <p class="d-flex gap-1">
+        <strong>Fattura:</strong>
+        <a [routerLink]="['/fatture', prodotto.fattura]" class="my-text-primary"
+          >{{numeroFattura}}</a
+        >
+      </p>
+      <p><strong>Nome Prodotto:</strong> {{ prodotto.nome }}</p>
+      <p><strong>Prezzo:</strong> {{ prodotto.prezzo | currency }}</p>
+      <p><strong>IVA:</strong> {{ iva | percent }}</p>
+      <p><strong>Quantita:</strong> {{ prodotto.quantita }}</p>
+      <p><strong>descrizione:</strong> {{ prodotto.descrizione }}</p>
+    </div>
+  </app-box-detail>
+</div>

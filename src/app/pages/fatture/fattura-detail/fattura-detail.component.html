@@ -1,26 +1,35 @@
-<app-box-detail
-  [dataSource]="fattura.prodotti || []"
-  title="Dettagli Fattura"
-  tableTitle="Prodotti"
-  [editFunction]="editFattura"
-  [deleteFunction]="deleteFattura"
-  [displayedColumns]="displayedColumns"
-  [imponibile]="imponibileGenerale"
-  [iva]="fattura.iva"
-  [totale]="totaleGenerale"
-  [addFunction]="addProdotto"
-  [addButtonLabel]="'Aggiungi Prodotto'"
->
-  <div class="details">
-    <p><strong>Numero Fattura:</strong> {{ fattura.numeroFattura }}</p>
-    <p><strong>Importo:</strong> {{ fattura.importo | currency }}</p>
-    <p><strong>IVA:</strong> {{ fattura.iva | percent}}</p>
-    <p><strong>Scadenza:</strong> {{ fattura.scadenza | date }}</p>
-    <p class="d-flex gap-1">
-      <strong>Cliente:</strong>
-      <a [routerLink]="['/clienti', cliente.id]" class="my-text-primary"
-        >{{ cliente.nome }} {{ cliente.cognome }}</a
-      >
-    </p>
-  </div>
-</app-box-detail>
+<app-container-skeleton
+  *ngIf="isLoadingFattura"
+  [rowCount]="12"
+></app-container-skeleton>
+
+<div *ngIf="!isLoadingFattura">
+  <app-box-detail
+    [dataSource]="prodotti || []"
+    title="Dettagli Fattura"
+    tableTitle="Prodotti"
+    [editFunction]="editFattura"
+    [deleteFunction]="openDialogDeleteFatture"
+    [displayedColumns]="displayedColumns"
+    [imponibile]="imponibileGenerale"
+    [iva]="fattura.iva"
+    [totale]="totaleGenerale"
+    [addFunction]="addProdotto"
+    [addButtonLabel]="'Aggiungi Prodotto'"
+    [onView]="viewProdotto"
+    [onDelete]="openDialogDeleteProdotto"
+  >
+    <div class="details">
+      <p><strong>Numero Fattura:</strong> {{ fattura.numeroFattura }}</p>
+      <p><strong>Importo:</strong> {{ imponibileGenerale | currency }}</p>
+      <p><strong>IVA:</strong> {{ fattura.iva | percent }}</p>
+      <p><strong>Scadenza:</strong> {{ fattura.scadenza | date }}</p>
+      <p class="d-flex gap-1">
+        <strong>Cliente:</strong>
+        <a [routerLink]="['/clienti', cliente.id]" class="my-text-primary"
+          >{{ cliente.nome }} {{ cliente.cognome }}</a
+        >
+      </p>
+    </div>
+  </app-box-detail>
+</div>

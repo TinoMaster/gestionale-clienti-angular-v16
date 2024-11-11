@@ -36,6 +36,9 @@ import { OptionForPrincipalTableComponent } from './shared/components/option-for
 import { ConfirmDialogComponent } from './shared/components/dialogs/confirm-dialog/confirm-dialog.component';
 import { TableSkeletonComponent } from './shared/components/loadings/skeletons/table-skeleton/table-skeleton.component';
 import { ContainerSkeletonComponent } from './shared/components/loadings/skeletons/container-skeleton/container-skeleton.component';
+import { ProdottoDetailComponent } from './pages/prodotti/prodotto-detail/prodotto-detail.component';
+import { ProdottoNuovoComponent } from './pages/prodotti/prodotto-nuovo/prodotto-nuovo.component';
+import { ProdottoModificaComponent } from './pages/prodotti/prodotto-modifica/prodotto-modifica.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +66,9 @@ import { ContainerSkeletonComponent } from './shared/components/loadings/skeleto
     ConfirmDialogComponent,
     TableSkeletonComponent,
     ContainerSkeletonComponent,
+    ProdottoDetailComponent,
+    ProdottoNuovoComponent,
+    ProdottoModificaComponent,
   ],
   imports: [
     BrowserModule,

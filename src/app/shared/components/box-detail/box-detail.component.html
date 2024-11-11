@@ -5,9 +5,9 @@
     <span class="h4 fw-bold my-auto">{{ title }}</span>
 
     <div>
-      <button (click)="editFunction()" class="btn btn-warning btn-sm me-2"
-        >Modifica</button
-      >
+      <button (click)="editFunction()" class="btn btn-warning btn-sm me-2">
+        Modifica
+      </button>
       <button (click)="deleteFunction()" class="btn btn-danger btn-sm">
         Elimina
       </button>
@@ -18,7 +18,9 @@
     <ng-content select=".details"></ng-content>
   </div>
 
+  <!-- Table Content -->
   <app-table
+    *ngIf="dataSource.length > 0"
     [tableTitle]="tableTitle"
     [dataSource]="dataSource"
     [displayedColumns]="displayedColumns"
@@ -27,16 +29,18 @@
     [onDelete]="onDelete"
   ></app-table>
 
-  <div class="d-flex justify-content-end mt-2">
-    <button (click)="addFunction()" class="btn my-btn-primary bg-gradient">{{
-      addButtonLabel
-    }}</button>
+  <div *ngIf="addButtonLabel" class="d-flex justify-content-end mt-2">
+    <button (click)="addFunction()" class="btn my-btn-primary bg-gradient">
+      {{ addButtonLabel }}
+    </button>
   </div>
 
   <div
     class="d-flex flex-wrap justify-content-end align-items-center gap-3 mt-4 p-3 bg-light border rounded"
   >
-    <span *ngIf="imponibile"><strong>IMPONIBILE:</strong> {{ imponibile | currency }}</span>
+    <span *ngIf="imponibile"
+      ><strong>IMPONIBILE:</strong> {{ imponibile | currency }}</span
+    >
     <span *ngIf="iva"><strong>IVA:</strong> {{ iva | percent }}</span>
     <span class="text-success"
       ><strong>TOTALE: {{ totale | currency }}</strong>

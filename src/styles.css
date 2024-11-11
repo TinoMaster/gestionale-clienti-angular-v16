@@ -39,6 +39,11 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+:root input::placeholder, textarea::placeholder, select::placeholder {
+  color: rgb(99, 100, 100);
+  font-size: 12px;
+}
+
 :root .sm-container {
   max-width: 600px;
   margin: 0 auto;

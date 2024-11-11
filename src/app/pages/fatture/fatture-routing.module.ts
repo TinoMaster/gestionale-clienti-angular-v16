@@ -4,6 +4,9 @@ import { FattureComponent } from './fatture.component';
 import { FattureNuovaComponent } from './fatture-nuova/fatture-nuova.component';
 import { FattureModificaComponent } from './fatture-modifica/fatture-modifica.component';
 import { FatturaDetailComponent } from './fattura-detail/fattura-detail.component';
+import { ProdottoNuovoComponent } from '../prodotti/prodotto-nuovo/prodotto-nuovo.component';
+import { ProdottoModificaComponent } from '../prodotti/prodotto-modifica/prodotto-modifica.component';
+import { ProdottoDetailComponent } from '../prodotti/prodotto-detail/prodotto-detail.component';
 
 const routes: Routes = [
   {
@@ -22,6 +25,18 @@ const routes: Routes = [
     path: ':id',
     component: FatturaDetailComponent,
   },
+  {
+    path: ':idFattura/prodotto/nuovo',
+    component: ProdottoNuovoComponent
+  },
+  {
+    path: 'prodotto/modifica/:id',
+    component: ProdottoModificaComponent
+  },
+  {
+    path: 'prodotto/:id',
+    component: ProdottoDetailComponent
+  }
 ];
 
 @NgModule({

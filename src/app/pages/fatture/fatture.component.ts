@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { FormFilter } from 'src/app/core/models/common/global.types';
+import {
+  DialogToConfirmData,
+  FormFilter,
+} from 'src/app/core/models/common/global.types';
 import { FattureDto } from 'src/app/core/models/dto/fatture-dto.model';
 import { FattureService } from 'src/app/core/services/fatture.service';
+import { ConfirmDialogComponent } from 'src/app/shared/components/dialogs/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-fatture',
@@ -29,7 +34,11 @@ export class FattureComponent implements OnInit {
     'azioni',
   ];
 
-  constructor(private fattureService: FattureService, private router: Router) {}
+  constructor(
+    private fattureService: FattureService,
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.isLoadingTable = true;
@@ -87,4 +96,21 @@ export class FattureComponent implements OnInit {
       this.filteredFattureList = fatture;
     });
   }
+
+  openDialogDeleteFattura = (id: number) => {
+    const data: DialogToConfirmData = {
+      message: 'Sei sicuro di voler cancellare la fattura?',
+      content: 'Questa operazione è irreversibile',
+    };
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.onDeleteFattura(id);
+      }
+    });
+  };
 }

@@ -14,5 +14,5 @@ export interface ProdottoDto {
   descrizione: string;
   quantita: number;
   fattura: number;
-  totale?: number;
+  totale: number;
 }

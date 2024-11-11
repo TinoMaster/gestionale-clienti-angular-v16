@@ -37,12 +37,16 @@ export class ClientiNuovoComponent implements OnInit {
 
     this.clientiService.saveClient(clienteToSave).subscribe((response) => {
       if (response) {
-        if (window.history.length > 1) {
-          this.location.back();
-        } else {
-          this.router.navigate(['/clienti']);
-        }
+        this.goBack();
       }
     });
+  }
+
+  goBack() {
+    if (window.history.length > 1) {
+      this.location.back();
+    } else {
+      this.router.navigate(['/clienti']);
+    }
   }
 }

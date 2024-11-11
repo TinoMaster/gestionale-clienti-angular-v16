@@ -1,0 +1,103 @@
+<div class="sm-container w-100 mx-auto p-4 bg-white rounded shadow">
+  <h4 class="h4 mb-4 text-center text-dark">Creazione Prodotto</h4>
+  <form [formGroup]="formNuovoProdotto" (ngSubmit)="saveProdotto()">
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome:</label>
+      <input
+        type="text"
+        id="nome"
+        name="name"
+        class="form-control"
+        placeholder="Introdurre il nome"
+        formControlName="name"
+      />
+      <p
+        class="alert alert-danger"
+        *ngIf="
+          formNuovoProdotto.controls['name'].invalid &&
+          formNuovoProdotto.controls['name'].touched
+        "
+      >
+        Questo campo è obbligatorio
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Prezzo:</label>
+      <input
+        type="text"
+        id="price"
+        name="price"
+        class="form-control"
+        placeholder="Introdurre il prezzo"
+        formControlName="price"
+      />
+      <p
+        class="alert alert-danger"
+        *ngIf="
+          formNuovoProdotto.controls['price'].invalid &&
+          formNuovoProdotto.controls['price'].touched
+        "
+      >
+        Questo campo è obbligatorio
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="quantita" class="form-label">Quantita:</label>
+      <input
+        type="text"
+        id="quantita"
+        name="quantita"
+        class="form-control"
+        placeholder="Introdurre la quantita"
+        formControlName="quantita"
+      />
+      <p
+        class="alert alert-danger"
+        *ngIf="
+          formNuovoProdotto.controls['quantita'].invalid &&
+          formNuovoProdotto.controls['quantita'].touched
+        "
+      >
+        Questo campo è obbligatorio
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="descrizione" class="form-label">Descrizione:</label>
+      <textarea
+        id="descrizione"
+        name="description"
+        class="form-control"
+        placeholder="Introdurre la descrizione"
+        formControlName="description"
+      ></textarea>
+      <p
+        class="alert alert-danger"
+        *ngIf="
+          formNuovoProdotto.controls['description'].invalid &&
+          formNuovoProdotto.controls['description'].touched
+        "
+      >
+        Questo campo è obbligatorio
+      </p>
+    </div>
+
+    <div class="d-grid">
+      <button
+        type="submit"
+        class="btn btn-dark bg-gradient"
+        [disabled]="!formNuovoProdotto.valid"
+      >
+        Creare Prodotto
+      </button>
+    </div>
+  </form>
+
+  <div class="mt-4 text-center">
+    <a routerLink="/clienti" class="text-dark text-decoration-none"
+      >Tornare Indietro</a
+    >
+  </div>
+</div>
