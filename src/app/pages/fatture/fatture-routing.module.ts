@@ -30,12 +30,15 @@ const routes: Routes = [
     component: ProdottoNuovoComponent
   },
   {
-    path: 'prodotto/modifica/:id',
+    path: ':idFattura/prodotto/modifica/:id',
     component: ProdottoModificaComponent
   },
   {
-    path: 'prodotto/:id',
+    path: ':idFattura/prodotto/:id',
     component: ProdottoDetailComponent
+  },{
+    path: ':idFattura/prodotto',
+    redirectTo: ':idFattura'
   }
 ];
 

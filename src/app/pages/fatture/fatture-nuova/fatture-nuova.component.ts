@@ -54,12 +54,16 @@ export class FattureNuovaComponent implements OnInit {
 
     this.fattureService.saveFattura(fatturaToSave).subscribe(() => {
       if (fatturaToSave) {
-        if (window.history.length > 1) {
-          this.location.back();
-        } else {
-          this.router.navigate(['/fatture']);
-        }
+        this.goBack();
       }
     });
+  }
+
+  goBack() {
+    if (window.history.length > 1) {
+      this.location.back();
+    } else {
+      this.router.navigate(['/fatture']);
+    }
   }
 }

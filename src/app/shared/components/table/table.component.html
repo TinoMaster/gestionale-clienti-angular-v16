@@ -3,7 +3,7 @@
   <table
     *ngIf="dataSource"
     mat-table
-    [dataSource]="dataSource"
+    [dataSource]="data"
     class="mat-elevation-z8"
   >
     <ng-container
@@ -66,6 +66,13 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+  <mat-paginator
+    [pageSizeOptions]="[9, 15, 25]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+    class="mt-1 rounded-1 bg-gradient"
+  >
+  </mat-paginator>
   <p *ngIf="dataSource?.length === 0" class="text-muted text-center">
     Non ci sono elementi da mostrare
   </p>

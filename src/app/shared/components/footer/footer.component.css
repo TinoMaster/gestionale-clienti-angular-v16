@@ -1,4 +1,9 @@
-footer ul li a,p {
+footer p,a {
+  font-size: 10px;
+}
+
+footer ul li a,
+p {
   color: #6c757d;
 }
 

@@ -104,7 +104,7 @@ export class FatturaDetailComponent {
   };
 
   viewProdotto = (id: number) => {
-    this.router.navigate([`/fatture/prodotto/${id}`], {
+    this.router.navigate([`/fatture/${this.idFattura}/prodotto/${id}`], {
       queryParams: {
         iva: this.fattura.iva,
         numeroFattura: this.fattura.numeroFattura,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 
@@ -7,9 +7,8 @@ import { filter, Subscription } from 'rxjs';
   templateUrl: './nav-router-links.component.html',
   styleUrls: ['./nav-router-links.component.css'],
 })
-export class NavRouterLinksComponent {
-  segments: string[] = [];
-  currentRoute: string = '';
+export class NavRouterLinksComponent implements OnInit, OnDestroy {
+  segments: { name: string; url: string }[] = [];
   private subscription: Subscription = new Subscription();
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
@@ -34,17 +33,13 @@ export class NavRouterLinksComponent {
     let route = this.activatedRoute.root;
     let url = '';
 
-    // Recorre cada segmento de la ruta y construye el array de segmentos
+    // Recorre cada nivel de la ruta y agrega cada segmento individualmente
     while (route.firstChild) {
       route = route.firstChild;
-      const routeConfig = route.snapshot.url
-        .map((segment) => segment.path)
-        .join('/');
-      if (routeConfig) {
-        url += `/${routeConfig}`;
-        this.segments.push(routeConfig);
-      }
+      route.snapshot.url.forEach((segment) => {
+        url += `/${segment.path}`;
+        this.segments.push({ name: segment.path, url });
+      });
     }
-    this.currentRoute = url;
   }
 }
