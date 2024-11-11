@@ -34,6 +34,8 @@ import { BoxDetailComponent } from './shared/components/box-detail/box-detail.co
 import { TableComponent } from './shared/components/table/table.component';
 import { OptionForPrincipalTableComponent } from './shared/components/option-for-principal-table/option-for-principal-table.component';
 import { ConfirmDialogComponent } from './shared/components/dialogs/confirm-dialog/confirm-dialog.component';
+import { TableSkeletonComponent } from './shared/components/loadings/skeletons/table-skeleton/table-skeleton.component';
+import { ContainerSkeletonComponent } from './shared/components/loadings/skeletons/container-skeleton/container-skeleton.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import { ConfirmDialogComponent } from './shared/components/dialogs/confirm-dial
     TableComponent,
     OptionForPrincipalTableComponent,
     ConfirmDialogComponent,
+    TableSkeletonComponent,
+    ContainerSkeletonComponent,
   ],
   imports: [
     BrowserModule,

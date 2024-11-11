@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { FattureDto, FattureServer } from '../models/dto/fatture-dto.model';
 import { FormFilter } from '../models/common/global.types';
-import { ProdottoDto, ProdottoServer } from '../models/dto/prodotto-dto.model';
 import { mapFatturaToDto } from '../mappers/fattura.mapper';
 
 @Injectable({

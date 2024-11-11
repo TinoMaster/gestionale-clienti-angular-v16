@@ -1,12 +1,12 @@
 table {
-	width: 100%;
-	margin: 20px auto;
-	border-collapse: collapse;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-	border-radius: 10px;
-	overflow: hidden;
+  width: 100%;
+  margin: auto;
+  border-collapse: collapse;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-table th{
- background-color: rgba(26, 38, 46, 0.9);
+table th {
+  background-color: rgba(26, 38, 46, 0.9);
 }

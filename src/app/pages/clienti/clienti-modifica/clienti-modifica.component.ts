@@ -52,12 +52,16 @@ export class ClientiModificaComponent implements OnInit {
       .updateClient(parseInt(this.idClient), clienteToUpdate)
       .subscribe((response) => {
         if (response) {
-          if (window.history.length > 1) {
-            this.location.back();
-          } else {
-            this.router.navigate(['/clienti']);
-          }
+          this.goBack();
         }
       });
+  }
+
+  goBack() {
+    if (window.history.length > 1) {
+      this.location.back();
+    } else {
+      this.router.navigate(['/clienti']);
+    }
   }
 }

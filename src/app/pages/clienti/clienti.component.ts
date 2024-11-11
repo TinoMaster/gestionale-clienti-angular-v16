@@ -12,6 +12,7 @@ import { ConfirmDialogComponent } from 'src/app/shared/components/dialogs/confir
   styleUrls: ['./clienti.component.css'],
 })
 export class ClientiComponent implements OnInit {
+  isLoading: boolean = false;
   clientiList!: ClientiDto[];
   filteredList!: ClientiDto[];
   titleTable!: string;
@@ -31,10 +32,15 @@ export class ClientiComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+  this.isLoading = true;
+  setTimeout(() => {
     this.clientiService.getAllClients().subscribe((clienti) => {
       this.clientiList = clienti;
       this.filteredList = clienti;
+      this.isLoading = false;
     });
+  }, 300)
+
   }
 
   filtered = (name: string) => {

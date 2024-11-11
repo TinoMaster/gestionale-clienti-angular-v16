@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormFilter } from 'src/app/core/models/common/global.types';
 import { FattureDto } from 'src/app/core/models/dto/fatture-dto.model';
@@ -9,7 +9,8 @@ import { FattureService } from 'src/app/core/services/fatture.service';
   templateUrl: './fatture.component.html',
   styleUrls: ['./fatture.component.css'],
 })
-export class FattureComponent {
+export class FattureComponent implements OnInit {
+  isLoadingTable: boolean = false;
   fattureList!: FattureDto[];
   filteredFattureList!: FattureDto[];
 
@@ -28,11 +29,17 @@ export class FattureComponent {
     'azioni',
   ];
 
-  constructor(private fattureService: FattureService, private router: Router) {
-    this.fattureService.getAllFatture().subscribe((fatture) => {
-      this.fattureList = fatture;
-      this.filteredFattureList = fatture;
-    });
+  constructor(private fattureService: FattureService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.isLoadingTable = true;
+    setTimeout(() => {
+      this.fattureService.getAllFatture().subscribe((fatture) => {
+        this.fattureList = fatture;
+        this.filteredFattureList = fatture;
+        this.isLoadingTable = false;
+      });
+    }, 300);
   }
 
   toggleFilter = () => {

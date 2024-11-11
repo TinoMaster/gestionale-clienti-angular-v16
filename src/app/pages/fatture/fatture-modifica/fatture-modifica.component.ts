@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,7 +17,8 @@ export class FattureModificaComponent implements OnInit {
     private clientiService: ClientiService,
     private fattureService: FattureService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   idFattura!: number;
@@ -66,8 +68,16 @@ export class FattureModificaComponent implements OnInit {
       .updateFattura(this.idFattura, fatturaToUpdate)
       .subscribe(() => {
         if (fatturaToUpdate) {
-          this.router.navigate(['/fatture']);
+          this.goBack();
         }
       });
+  }
+
+  goBack() {
+    if (window.history.length > 1) {
+      this.location.back();
+    } else {
+      this.router.navigate(['/fatture']);
+    }
   }
 }

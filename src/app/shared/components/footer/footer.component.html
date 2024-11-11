@@ -1,8 +1,10 @@
-<footer class="p-3 text-center text-md-start my-bg-dark bg-gradient">
+<footer
+  class="pt-3 px-3 text-center text-md-start my-bg-dark bg-gradient small"
+>
   <div class="d-grid gap-6 d-md-flex justify-content-md-around text-white-50">
     <!-- División de Páginas -->
     <div class="">
-      <h5 class="bold my-1">Pagine</h5>
+      <h5 class="bold m-0">Pagine</h5>
       <ul class="list-unstyled d-flex flex-wrap gap-3 justify-content-center">
         <li *ngFor="let page of pageLinks">
           <a [routerLink]="page.route" class="text-decoration-none">{{
@@ -14,7 +16,7 @@
 
     <!-- División de Descripción -->
     <div class="">
-      <h5 class="bold my-1">Descrizione</h5>
+      <h5 class="bold m-0">Descrizione</h5>
       <p class="mb-0">
         {{ description }}
       </p>
@@ -22,7 +24,7 @@
 
     <!-- División de Contactos -->
     <div class="">
-      <h5 class="bold my-1">Social</h5>
+      <h5 class="bold m-0">Social</h5>
       <ul class="d-flex flex-wrap list-unstyled">
         <li class="d-flex gap-2 justify-content-center w-100">
           <a
@@ -37,7 +39,7 @@
     </div>
 
     <div>
-      <h5 class="bold my-1">Contatti</h5>
+      <h5 class="bold m-0">Contatti</h5>
       <ul class="d-flex flex-wrap list-unstyled gap-3">
         <li class="d-flex gap-2 justify-content-center w-100">
           <a
@@ -53,12 +55,5 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div
-    class="container d-flex flex-wrap align-items-center justify-content-center gap-3 px-2"
-  >
-    <span class="text-muted text-light-emphasis">
-      © 2023, Created by Software Industriale.
-    </span>
   </div>
 </footer>

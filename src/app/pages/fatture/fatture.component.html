@@ -58,10 +58,19 @@
   </form>
 </app-option-for-principal-table>
 
-<app-table
-  [displayedColumns]="displayedColumns"
-  [dataSource]="filteredFattureList"
-  [onView]="onViewFattura"
-  [onDelete]="onDeleteFattura"
-  [onEdit]="onEditFattura"
-></app-table>
+<div class="mt-3">
+  <app-table-skeleton
+    *ngIf="isLoadingTable"
+    [rowCount]="10"
+  ></app-table-skeleton>
+</div>
+
+<div *ngIf="!isLoadingTable" class="mt-3">
+  <app-table
+    [displayedColumns]="displayedColumns"
+    [dataSource]="filteredFattureList"
+    [onView]="onViewFattura"
+    [onDelete]="onDeleteFattura"
+    [onEdit]="onEditFattura"
+  ></app-table>
+</div>

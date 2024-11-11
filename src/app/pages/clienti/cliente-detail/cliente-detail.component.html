@@ -1,14 +1,22 @@
-<app-box-detail
-  [dataSource]="cliente.fatture || []"
+<app-container-skeleton
+  *ngIf="isLoadingCliente"
+  [rowCount]="12"
+></app-container-skeleton>
+
+<div *ngIf="!isLoadingCliente">
+  <app-box-detail
+  [dataSource]="fattureDelCliente || []"
   title="Dettaglio Cliente"
   tableTitle="Fatture"
   [editFunction]="editClient"
   [deleteFunction]="openDialogDeleteClient"
   [displayedColumns]="displayedColumns"
-  [totale]="cliente.totaleFatture ?? 0"
+  [totale]="totaleFatture"
   [addFunction]="addFattura"
   [addButtonLabel]="'Aggiungi Fattura'"
   [onView]="onViewFattura"
+  [onEdit]="onEditFattura"
+  [onDelete]="openDialogDeleteFattura"
 >
   <div class="details">
     <p aria-hidden="true"><strong>Nome:</strong> {{ cliente.nome }}</p>
@@ -16,3 +24,5 @@
     <p aria-hidden="true"><strong>Email:</strong> {{ cliente.email }}</p>
   </div>
 </app-box-detail>
+</div>
+
