@@ -1,0 +1,28 @@
+.progress {
+  height: 20px;
+}
+
+.progress-bar {
+  background-color: #4CAF50;
+  font-weight: bold;
+  color: white;
+}
+
+table {
+  width: 100%;
+  margin: auto;
+  border-collapse: collapse;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+table th {
+  background-color: rgba(26, 38, 46, 0.9);
+  padding: 15px;
+  color: white;
+}
+
+table td {
+  padding: 15px;
+}

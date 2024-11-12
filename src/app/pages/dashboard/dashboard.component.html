@@ -1,11 +1,12 @@
-<div class="container-fluid">
-  <div class="row gap-5 gap-lg-0">
+<div class="container-fluid shadow my-bg-dark bg-gradient rounded-1">
+  <div class="row gap-5 gap-lg-0 py-4 px-2">
     <div class="col-12 col-md-6 col-lg-3">
       <app-simple-widgets icon="group" background_icon="blue">
         <span class="widget-title">Utenti Questo Mese</span>
-        <span class="widget-value">{{newUserThisMonth}}</span>
+        <span class="widget-value">{{ newUserThisMonth }}</span>
         <span class="widget-description"
-          ><strong class="text-success">+25%</strong>&nbsp;in base al mese scorso</span
+          ><strong class="text-success">+25%</strong>&nbsp;in base al mese
+          scorso</span
         >
       </app-simple-widgets>
     </div>
@@ -13,9 +14,10 @@
     <div class="col-12 col-md-6 col-lg-3">
       <app-simple-widgets icon="receipt" background_icon="pink">
         <span class="widget-title">Fatture Scadono Questo Mese</span>
-        <span class="widget-value">{{fattureThisMonth.length}}</span>
+        <span class="widget-value">{{ fattureThisMonth.length }}</span>
         <span class="widget-description"
-          ><strong class="text-success">+15%</strong>&nbsp;in base al mese scorso</span
+          ><strong class="text-success">+15%</strong>&nbsp;in base al mese
+          scorso</span
         >
       </app-simple-widgets>
     </div>
@@ -23,9 +25,10 @@
     <div class="col-12 col-md-6 col-lg-3">
       <app-simple-widgets icon="attach_money" background_icon="green">
         <span class="widget-title">Saldi Questo Mese</span>
-        <span class="widget-value">{{saldiQuestoMese | currency}}</span>
+        <span class="widget-value">{{ saldiQuestoMese | currency }}</span>
         <span class="widget-description"
-          ><strong class="text-danger">-5%</strong>&nbsp;in base al mese scorso</span
+          ><strong class="text-danger">-5%</strong>&nbsp;in base al mese
+          scorso</span
         >
       </app-simple-widgets>
     </div>
@@ -33,16 +36,18 @@
     <div class="col-12 col-md-6 col-lg-3">
       <app-simple-widgets icon="paid" background_icon="orange">
         <span class="widget-title">Saldi Questo Anno</span>
-        <span class="widget-value">{{saldiTotali | currency}}</span>
+        <span class="widget-value">{{ saldiTotali | currency }}</span>
         <span class="widget-description"
-          ><strong class="text-success">+3%</strong>&nbsp;in base al anno scorso</span
+          ><strong class="text-success">+3%</strong>&nbsp;in base al anno
+          scorso</span
         >
       </app-simple-widgets>
     </div>
   </div>
 </div>
-<div class="row gap-5 gap-lg-0">
-  <div class="col-12 col-lg-6">
-    <app-chart></app-chart>
-  </div>
+<div class="row py-4 px-2">
+  <h4 class="fw-bold h5 text-dark text-muted text-opacity-50 text-capitalize">
+    Clienti in processo di pagamento
+  </h4>
+  <app-chart [clienti]="clienti.slice(0, 7)"></app-chart>
 </div>
