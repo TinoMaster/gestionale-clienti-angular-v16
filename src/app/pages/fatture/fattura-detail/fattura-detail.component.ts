@@ -121,6 +121,10 @@ export class FatturaDetailComponent {
     });
   };
 
+  editProdotto = (id: number) => {
+    this.router.navigate([`/fatture/${this.idFattura}/prodotto/modifica/${id}`]);
+  };
+
   openDialogDeleteProdotto = (id: number) => {
     const data: DialogToConfirmData = {
       message: 'Sei sicuro di voler eliminare il prodotto?',

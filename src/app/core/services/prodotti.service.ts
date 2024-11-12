@@ -23,6 +23,16 @@ export class ProdottiService {
     return this.httpClient.post<ProdottoServer>(this.url, prodottoToSave);
   }
 
+  updateProdotto(
+    id: number,
+    prodottoToUpdate: ProdottoServer
+  ): Observable<ProdottoServer> {
+    return this.httpClient.post<ProdottoServer>(
+      `${this.url}/update/${id}`,
+      prodottoToUpdate
+    );
+  }
+
   deleteProdotto(id: number): Observable<boolean> {
     return this.httpClient.get<boolean>(`${this.url}/delete/${id}`);
   }

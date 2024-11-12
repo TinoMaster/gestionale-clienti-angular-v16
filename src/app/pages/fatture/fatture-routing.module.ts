@@ -27,19 +27,20 @@ const routes: Routes = [
   },
   {
     path: ':idFattura/prodotto/nuovo',
-    component: ProdottoNuovoComponent
+    component: ProdottoNuovoComponent,
   },
   {
     path: ':idFattura/prodotto/modifica/:id',
-    component: ProdottoModificaComponent
+    component: ProdottoModificaComponent,
   },
   {
     path: ':idFattura/prodotto/:id',
-    component: ProdottoDetailComponent
-  },{
+    component: ProdottoDetailComponent,
+  },
+  {
     path: ':idFattura/prodotto',
-    redirectTo: ':idFattura'
-  }
+    redirectTo: ':idFattura',
+  },
 ];
 
 @NgModule({

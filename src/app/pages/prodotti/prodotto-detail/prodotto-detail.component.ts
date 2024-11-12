@@ -54,7 +54,10 @@ export class ProdottoDetailComponent implements OnInit {
   }
 
   editProdotto = () => {
-    this.router.navigate(['fatture/prodotti/modifica', this.idProdotto]);
+    this.router.navigate([
+      `fatture/${this.prodotto.fattura}/prodotto/modifica`,
+      this.idProdotto,
+    ]);
   };
 
   deleteProdotto = () => {
