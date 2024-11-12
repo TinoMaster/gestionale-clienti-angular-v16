@@ -7,6 +7,7 @@ export interface FormFilter {
 export interface NavLinks {
   name: string;
   route: string;
+  icon?: string;
 }
 
 export interface SocialMediaLinks {

@@ -28,3 +28,22 @@ export function calculateTotaleByFattura(
 ): number {
   return imponibile * (1 + iva);
 }
+
+export function fattureScadonoInThisMonth(
+  fatture: FattureDto[]
+): FattureDto[] {
+  const today = new Date();
+
+  return fatture.filter(
+    (fattura: FattureDto) =>
+      new Date(fattura.scadenza).getMonth() === today.getMonth() &&
+      new Date(fattura.scadenza).getFullYear() === today.getFullYear()
+  );
+}
+
+export function saldiPerFatture(fatture: FattureDto[]): number {
+  return fatture.reduce(
+    (acc: number, fattura: FattureDto) => acc + fattura.importo,
+    0
+  );
+}

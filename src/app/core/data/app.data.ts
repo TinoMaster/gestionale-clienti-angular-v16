@@ -4,14 +4,17 @@ export const navLinks: NavLinks[] = [
   {
     name: 'Dashboard',
     route: 'dashboard',
+    icon: 'dashboard',
   },
   {
     name: 'Clienti',
     route: 'clienti',
+    icon: 'group',
   },
   {
     name: 'Fatture',
     route: 'fatture',
+    icon: 'receipt',
   },
 ];
 

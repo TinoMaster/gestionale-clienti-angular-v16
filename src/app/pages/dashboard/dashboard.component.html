@@ -1,49 +1,48 @@
 <div class="container-fluid">
   <div class="row gap-5 gap-lg-0">
     <div class="col-12 col-md-6 col-lg-3">
-      <app-simple-widgets icon="payments" background_icon="blue">
-        <span class="widget-title">Today's Users</span>
-        <span class="widget-value">2,300</span>
+      <app-simple-widgets icon="group" background_icon="blue">
+        <span class="widget-title">Utenti Questo Mese</span>
+        <span class="widget-value">{{newUserThisMonth}}</span>
         <span class="widget-description"
-          ><strong class="text-green-500">+25%</strong>&nbsp;than last
-          week</span
+          ><strong class="text-success">+25%</strong>&nbsp;in base al mese scorso</span
         >
       </app-simple-widgets>
     </div>
 
     <div class="col-12 col-md-6 col-lg-3">
-      <app-simple-widgets icon="person" background_icon="pink">
-        <span class="widget-title">Today's Users</span>
-        <span class="widget-value">2,300</span>
+      <app-simple-widgets icon="receipt" background_icon="pink">
+        <span class="widget-title">Fatture Scadono Questo Mese</span>
+        <span class="widget-value">{{fattureThisMonth.length}}</span>
         <span class="widget-description"
-          ><strong class="text-green-500">+25%</strong>&nbsp;than last
-          week</span
+          ><strong class="text-success">+15%</strong>&nbsp;in base al mese scorso</span
         >
       </app-simple-widgets>
     </div>
 
     <div class="col-12 col-md-6 col-lg-3">
-      <app-simple-widgets icon="group_add" background_icon="green">
-        <span class="widget-title">New Clients</span>
-        <span class="widget-value">3,462</span>
+      <app-simple-widgets icon="attach_money" background_icon="green">
+        <span class="widget-title">Saldi Questo Mese</span>
+        <span class="widget-value">{{saldiQuestoMese | currency}}</span>
         <span class="widget-description"
-          ><strong class="text-green-500">+25%</strong>&nbsp;than last
-          week</span
+          ><strong class="text-danger">-5%</strong>&nbsp;in base al mese scorso</span
         >
       </app-simple-widgets>
     </div>
 
     <div class="col-12 col-md-6 col-lg-3">
-      <app-simple-widgets icon="signal_cellular_alt" background_icon="orange">
-        <span class="widget-title">Sales</span>
-        <span class="widget-value">$103,430</span>
+      <app-simple-widgets icon="paid" background_icon="orange">
+        <span class="widget-title">Saldi Questo Anno</span>
+        <span class="widget-value">{{saldiTotali | currency}}</span>
         <span class="widget-description"
-          ><strong class="text-green-500">+25%</strong>&nbsp;than last
-          week</span
+          ><strong class="text-success">+3%</strong>&nbsp;in base al anno scorso</span
         >
       </app-simple-widgets>
     </div>
   </div>
 </div>
 <div class="row gap-5 gap-lg-0">
+  <div class="col-12 col-lg-6">
+    <app-chart></app-chart>
+  </div>
 </div>

@@ -40,6 +40,7 @@ import { ContainerSkeletonComponent } from './shared/components/loadings/skeleto
 import { ProdottoDetailComponent } from './pages/prodotti/prodotto-detail/prodotto-detail.component';
 import { ProdottoNuovoComponent } from './pages/prodotti/prodotto-nuovo/prodotto-nuovo.component';
 import { ProdottoModificaComponent } from './pages/prodotti/prodotto-modifica/prodotto-modifica.component';
+import { ChartComponent } from './shared/components/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { ProdottoModificaComponent } from './pages/prodotti/prodotto-modifica/pr
     ProdottoDetailComponent,
     ProdottoNuovoComponent,
     ProdottoModificaComponent,
+    ChartComponent,
   ],
   imports: [
     BrowserModule,
