@@ -28,17 +28,20 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.clientiService.getAllClients().subscribe((data) => {
-      console.log(data);
-      this.clienti = data;
-      this.newUserThisMonth = data.length;
-    });
+    setTimeout(() => {
+      this.clientiService.getAllClients().subscribe((data) => {
+        console.log(data);
+        this.clienti = data;
+        this.newUserThisMonth = data.length;
+      });
 
-    this.fattureService.getAllFatture().subscribe((data) => {
-      this.fatture = data;
-      this.fattureThisMonth = fattureScadonoInThisMonth(data);
-      this.saldiQuestoMese = saldiPerFatture(this.fattureThisMonth);
-      this.saldiTotali = saldiPerFatture(this.fatture);
-    });
+      this.fattureService.getAllFatture().subscribe((data) => {
+        this.fatture = data;
+        this.fattureThisMonth = fattureScadonoInThisMonth(data);
+        this.saldiQuestoMese = saldiPerFatture(this.fattureThisMonth);
+        this.saldiTotali = saldiPerFatture(this.fatture);
+      });
+    },300)
+
   }
 }

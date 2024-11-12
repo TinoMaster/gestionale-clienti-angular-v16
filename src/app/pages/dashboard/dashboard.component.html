@@ -1,4 +1,12 @@
-<div class="container-fluid shadow my-bg-dark bg-gradient rounded-1">
+<app-container-skeleton
+  *ngIf="!clienti || !fatture"
+  [rowCount]="4"
+></app-container-skeleton>
+
+<div
+  *ngIf="clienti && fatture"
+  class="container-fluid shadow my-bg-dark bg-gradient rounded-1"
+>
   <div class="row gap-5 gap-lg-0 py-4 px-2">
     <div class="col-12 col-md-6 col-lg-3">
       <app-simple-widgets icon="group" background_icon="blue">
@@ -49,5 +57,10 @@
   <h4 class="fw-bold h5 text-dark text-muted text-opacity-50 text-capitalize">
     Clienti in processo di pagamento
   </h4>
-  <app-chart [clienti]="clienti.slice(0, 7)"></app-chart>
+  <app-chart *ngIf="clienti" [clienti]="clienti.slice(0, 7)"></app-chart>
+
+  <app-container-skeleton
+    *ngIf="!clienti"
+    [rowCount]="7"
+  ></app-container-skeleton>
 </div>
