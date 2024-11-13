@@ -30,7 +30,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.clientiService.getAllClients().subscribe((data) => {
-        console.log(data);
         this.clienti = data;
         this.newUserThisMonth = data.length;
       });
